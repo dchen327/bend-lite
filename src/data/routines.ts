@@ -3,8 +3,8 @@ export type RoutineStep = {
   exerciseId: string;
   /** Total active stretch time in seconds, excluding transitions. */
   duration: number;
-  /** "each" switches sides halfway through the total duration. */
-  side: "both" | "each";
+  /** Whether the player pauses to switch sides halfway through. */
+  switchSides: boolean;
 };
 
 export type Routine = {
@@ -23,28 +23,28 @@ export type Routine = {
  */
 export const fullBodyRoutine: Routine = {
   id: "my-full-body",
-  name: "My Full Body",
+  name: "Full Body 8/27",
   exerciseTransitionSeconds: 3,
   sideTransitionSeconds: 3,
   steps: [
-    { exerciseId: "upward-salute", duration: 30, side: "both" },
-    { exerciseId: "rag-doll", duration: 30, side: "both" },
-    { exerciseId: "standing-chest-opener", duration: 30, side: "both" },
-    { exerciseId: "wide-leg-bend", duration: 30, side: "both" },
-    { exerciseId: "side-lunge", duration: 45, side: "each" },
-    { exerciseId: "lunge", duration: 45, side: "each" },
-    { exerciseId: "upward-dog", duration: 15, side: "both" },
-    { exerciseId: "childs-pose", duration: 15, side: "both" },
-    { exerciseId: "downward-dog", duration: 30, side: "both" },
-    { exerciseId: "pigeon", duration: 45, side: "each" },
-    { exerciseId: "seated-twist", duration: 45, side: "each" },
-    { exerciseId: "lying-figure-four", duration: 45, side: "each" },
-    { exerciseId: "lying-hamstring", duration: 45, side: "each" },
-    { exerciseId: "reclined-butterfly", duration: 30, side: "both" },
-    { exerciseId: "spinal-twist", duration: 45, side: "each" },
-    { exerciseId: "kneeling-quad", duration: 45, side: "each" },
-    { exerciseId: "squat-stretch", duration: 15, side: "both" },
-    { exerciseId: "seated-fold", duration: 15, side: "both" },
+    { exerciseId: "upward-salute", duration: 30, switchSides: false },
+    { exerciseId: "rag-doll", duration: 30, switchSides: false },
+    { exerciseId: "standing-chest-opener", duration: 30, switchSides: false },
+    { exerciseId: "wide-leg-bend", duration: 30, switchSides: false },
+    { exerciseId: "side-lunge", duration: 45, switchSides: true },
+    { exerciseId: "lunge", duration: 45, switchSides: true },
+    { exerciseId: "upward-dog", duration: 15, switchSides: false },
+    { exerciseId: "childs-pose", duration: 15, switchSides: false },
+    { exerciseId: "downward-dog", duration: 30, switchSides: false },
+    { exerciseId: "pigeon", duration: 45, switchSides: true },
+    { exerciseId: "seated-twist", duration: 45, switchSides: true },
+    { exerciseId: "lying-figure-four", duration: 45, switchSides: true },
+    { exerciseId: "lying-hamstring", duration: 45, switchSides: true },
+    { exerciseId: "reclined-butterfly", duration: 30, switchSides: false },
+    { exerciseId: "spinal-twist", duration: 45, switchSides: true },
+    { exerciseId: "kneeling-quad", duration: 45, switchSides: true },
+    { exerciseId: "squat-stretch", duration: 15, switchSides: false },
+    { exerciseId: "seated-fold", duration: 15, switchSides: false },
   ],
 };
 
