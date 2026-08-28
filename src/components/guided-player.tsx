@@ -211,7 +211,7 @@ export function GuidedPlayer({
         cancelAnimationFrame(frameRef.current);
       }
     };
-  }, [advanceSegment, segmentIndex, status]);
+  }, [advanceSegment, segment?.kind, segmentIndex, status]);
 
   useEffect(() => {
     if (status !== "running" || !segment || !exercise) {
@@ -433,7 +433,7 @@ export function GuidedPlayer({
         </header>
 
         <div className="flex flex-1 flex-col items-center px-5 pb-32 pt-7">
-          <div className="relative aspect-square w-full max-w-[350px]">
+          <div className="relative aspect-square w-[calc(100%_-_2rem)] max-w-[350px]">
             <svg
               viewBox="0 0 100 100"
               className="absolute inset-0 z-10 size-full -rotate-90"
@@ -474,7 +474,7 @@ export function GuidedPlayer({
             </div>
             {activeStep.switchSides ? (
               <span
-                className="absolute right-[6%] top-[6%] z-20 grid size-12 place-items-center rounded-full border-2 border-white bg-white text-[var(--brand)] shadow-lg"
+                className="absolute -right-5 top-0 z-20 grid size-12 place-items-center rounded-full border-2 border-white bg-white text-[var(--brand)] shadow-md"
                 title="Switch sides halfway"
               >
                 <Repeat2 className="size-6" strokeWidth={2.5} aria-hidden="true" />
@@ -492,7 +492,7 @@ export function GuidedPlayer({
             <button
               type="button"
               onClick={() => setShowDetails((visible) => !visible)}
-              className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-3xl font-bold tracking-tight text-slate-950"
+              className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[2rem] font-bold tracking-tight text-slate-950"
               aria-expanded={showDetails}
             >
               {exercise.name}
@@ -500,7 +500,7 @@ export function GuidedPlayer({
             </button>
             {!isTransition ? (
               <p
-                className="timer-digits mt-6 text-6xl font-bold tracking-tight text-slate-400"
+                className="timer-digits mt-6 text-7xl font-bold tracking-tight text-slate-400"
                 aria-live="off"
               >
                 {formatRemaining(displayRemainingMs)}
