@@ -554,7 +554,13 @@ export function GuidedPlayer({
           <div className="size-11" aria-hidden="true" />
         </header>
 
-        <div className="flex min-h-0 flex-1 flex-col items-center px-5 pb-28 pt-[clamp(1rem,3dvh,1.75rem)]">
+        <div
+          className={`flex min-h-0 flex-1 flex-col items-center px-5 pb-28 pt-[clamp(1rem,3dvh,1.75rem)] ${
+            showDetails
+              ? "touch-pan-y overflow-y-auto overscroll-contain"
+              : "overflow-hidden"
+          }`}
+        >
           <div className="relative aspect-square w-[min(calc(100%_-_2rem),42dvh)] max-w-[350px] shrink-0">
             <svg
               viewBox="0 0 100 100"
