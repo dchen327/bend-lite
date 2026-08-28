@@ -98,7 +98,7 @@ export default function Home() {
                   </p>
                 ) : null}
               </div>
-              <span className="shrink-0 rounded-full bg-slate-100 px-3 py-1.5 font-mono text-sm font-semibold tabular-nums text-slate-500">
+              <span className="timer-digits shrink-0 rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-500">
                 {formatDuration(step.duration)}
               </span>
             </li>
