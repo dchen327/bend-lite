@@ -189,6 +189,7 @@ export function GuidedPlayer({
       remainingRef.current = currentRemaining;
       const beepSecond = Math.ceil(currentRemaining / 1000);
       if (
+        segment?.kind === "exercise" &&
         beepSecond <= 3 &&
         beepSecond > 0 &&
         beepSecondRef.current !== beepSecond
@@ -421,10 +422,10 @@ export function GuidedPlayer({
             <ChevronLeft className="size-6" aria-hidden="true" />
           </Link>
           <div className="text-center">
-            <p className="text-lg font-bold tabular-nums text-slate-900">
+            <p className="text-2xl font-bold tabular-nums text-slate-900">
               {segment.stepIndex + 1} of {routine.steps.length}
             </p>
-            <p className="text-[11px] font-bold tracking-[0.14em] text-slate-400 uppercase">
+            <p className="mt-0.5 text-lg font-bold tracking-[0.06em] text-slate-500 uppercase">
               {phaseLabel}
             </p>
           </div>
@@ -446,18 +447,20 @@ export function GuidedPlayer({
                 stroke="rgb(226 232 240)"
                 strokeWidth="2.5"
               />
-              <circle
-                cx="50"
-                cy="50"
-                r={CIRCLE_RADIUS}
-                fill="none"
-                stroke={isTransition ? "rgb(148 163 184)" : "var(--brand)"}
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeDasharray={CIRCLE_LENGTH}
-                strokeDashoffset={CIRCLE_LENGTH * (1 - progress)}
-                className="transition-[stroke-dashoffset] duration-75"
-              />
+              {!isTransition ? (
+                <circle
+                  cx="50"
+                  cy="50"
+                  r={CIRCLE_RADIUS}
+                  fill="none"
+                  stroke="var(--brand)"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeDasharray={CIRCLE_LENGTH}
+                  strokeDashoffset={CIRCLE_LENGTH * (1 - progress)}
+                  className="transition-[stroke-dashoffset] duration-75"
+                />
+              ) : null}
             </svg>
             <div className="absolute inset-[6%] overflow-hidden rounded-full bg-slate-100">
               <Image
@@ -471,10 +474,10 @@ export function GuidedPlayer({
             </div>
             {activeStep.switchSides ? (
               <span
-                className="absolute right-[7%] top-[7%] z-20 grid size-11 place-items-center rounded-full border-2 border-white bg-white text-slate-700 shadow-lg"
+                className="absolute right-[6%] top-[6%] z-20 grid size-12 place-items-center rounded-full border-2 border-white bg-white text-[var(--brand)] shadow-lg"
                 title="Switch sides halfway"
               >
-                <Repeat2 className="size-5" aria-hidden="true" />
+                <Repeat2 className="size-6" strokeWidth={2.5} aria-hidden="true" />
                 <span className="sr-only">Switch sides halfway</span>
               </span>
             ) : null}
@@ -482,7 +485,7 @@ export function GuidedPlayer({
 
           <div className="mt-7 text-center">
             {isTransition ? (
-              <p className="mb-2 text-sm font-bold tracking-[0.15em] text-[var(--brand)] uppercase">
+              <p className="mb-2 text-xl font-bold tracking-[0.1em] text-[var(--brand)] uppercase">
                 {phaseLabel}
               </p>
             ) : null}
@@ -495,12 +498,16 @@ export function GuidedPlayer({
               {exercise.name}
               <Info className="size-5 text-slate-300" aria-hidden="true" />
             </button>
-            <p
-              className="mt-6 font-mono text-6xl font-semibold tracking-tight tabular-nums text-slate-400"
-              aria-live="off"
-            >
-              {formatRemaining(displayRemainingMs)}
-            </p>
+            {!isTransition ? (
+              <p
+                className="timer-digits mt-6 text-6xl font-bold tracking-tight text-slate-400"
+                aria-live="off"
+              >
+                {formatRemaining(displayRemainingMs)}
+              </p>
+            ) : (
+              <div className="h-[4.5rem]" aria-hidden="true" />
+            )}
           </div>
 
           {showDetails ? (
