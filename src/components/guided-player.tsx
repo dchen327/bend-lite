@@ -448,7 +448,7 @@ export function GuidedPlayer({
 
   if (status === "complete") {
     return (
-      <main className="relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col items-center justify-center overflow-hidden bg-white px-8 text-center sm:my-5 sm:min-h-[calc(100dvh-2.5rem)] sm:rounded-[2rem] sm:shadow-xl">
+      <main className="relative mx-auto flex h-dvh w-full max-w-[440px] flex-col items-center justify-center overflow-hidden bg-white px-8 text-center sm:my-5 sm:h-[calc(100dvh-2.5rem)] sm:rounded-[2rem] sm:shadow-xl">
         <RoutineProgressBar progress={1} />
         <div className="grid size-28 place-items-center rounded-full bg-sky-50 text-[var(--brand)]">
           <Check className="size-14" strokeWidth={2.5} aria-hidden="true" />
@@ -532,8 +532,8 @@ export function GuidedPlayer({
           : "Stretch";
 
   return (
-    <div className="min-h-dvh bg-slate-100 sm:py-5">
-      <main className="relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col overflow-hidden bg-white sm:min-h-[calc(100dvh-2.5rem)] sm:rounded-[2rem] sm:shadow-xl">
+    <div className="h-dvh overflow-hidden bg-slate-100 sm:py-5">
+      <main className="relative mx-auto flex h-full w-full max-w-[440px] flex-col overflow-hidden bg-white sm:rounded-[2rem] sm:shadow-xl">
         <RoutineProgressBar progress={routineProgress} />
         <header className="flex items-center justify-between border-b border-slate-100 px-4 pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))]">
           <Link
