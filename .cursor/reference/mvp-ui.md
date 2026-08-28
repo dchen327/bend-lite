@@ -4,6 +4,7 @@ Source screenshots:
 
 - Routine setup: `/home/dchen327/.cursor/projects/home-dchen327-coding-projects-bend-lite/assets/c__Users_david_AppData_Roaming_Cursor_User_workspaceStorage_empty-window_images_Screenshot_20260827_165626-ca929c15-62a7-4905-bb8d-b901d6e68380.png`
 - Active player: `/home/dchen327/.cursor/projects/home-dchen327-coding-projects-bend-lite/assets/c__Users_david_AppData_Roaming_Cursor_User_workspaceStorage_empty-window_images_Screenshot_20260827_165636-79afeec3-5766-444e-bd92-9c1f4988c24b.png`
+- MVP routine: `/home/dchen327/.cursor/projects/home-dchen327-coding-projects-bend-lite/assets/c__Users_david_AppData_Roaming_Cursor_User_workspaceStorage_empty-window_images_Screenshot_20260827_170754-329844b0-c74d-4389-a2c7-b6c07bf7c5f4.png`
 
 ## Routine setup
 
@@ -21,3 +22,9 @@ Source screenshots:
 - Large muted countdown below the name.
 - Bottom transport controls: previous, prominent pause/resume, and next.
 - Minimal white, distraction-free presentation with generous spacing.
+
+## Timing
+
+- A per-side duration is the total active time and switches sides halfway.
+- Side switches use a 3-second transition.
+- Exercises use a 3-second transition.
