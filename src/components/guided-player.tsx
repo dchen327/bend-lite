@@ -448,7 +448,7 @@ export function GuidedPlayer({
 
   if (status === "complete") {
     return (
-      <main className="relative mx-auto flex h-dvh w-full max-w-[440px] flex-col items-center justify-center overflow-hidden bg-white px-8 text-center sm:my-5 sm:h-[calc(100dvh-2.5rem)] sm:rounded-[2rem] sm:shadow-xl">
+      <main className="fixed inset-0 mx-auto flex h-dvh w-full max-w-[440px] flex-col items-center justify-center overflow-hidden bg-white px-8 text-center sm:my-5 sm:h-[calc(100dvh-2.5rem)] sm:rounded-[2rem] sm:shadow-xl">
         <RoutineProgressBar progress={1} />
         <div className="grid size-28 place-items-center rounded-full bg-sky-50 text-[var(--brand)]">
           <Check className="size-14" strokeWidth={2.5} aria-hidden="true" />
@@ -473,7 +473,7 @@ export function GuidedPlayer({
             Run it again
           </button>
           <Link
-            href="/"
+            href={`/routines/${routine.id}`}
             className="flex h-12 items-center justify-center rounded-full font-semibold text-slate-500"
           >
             Back to routine
@@ -532,12 +532,12 @@ export function GuidedPlayer({
           : "Stretch";
 
   return (
-    <div className="h-dvh overflow-hidden bg-slate-100 sm:py-5">
+    <div className="fixed inset-0 h-dvh overflow-hidden bg-slate-100 sm:py-5">
       <main className="relative mx-auto flex h-full w-full max-w-[440px] flex-col overflow-hidden bg-white sm:rounded-[2rem] sm:shadow-xl">
         <RoutineProgressBar progress={routineProgress} />
         <header className="flex items-center justify-between border-b border-slate-100 px-4 pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))]">
           <Link
-            href="/"
+            href={`/routines/${routine.id}`}
             aria-label="Exit routine"
             className="grid size-11 place-items-center rounded-full text-slate-400 transition hover:bg-slate-100"
           >
@@ -554,8 +554,8 @@ export function GuidedPlayer({
           <div className="size-11" aria-hidden="true" />
         </header>
 
-        <div className="flex flex-1 flex-col items-center px-5 pb-32 pt-7">
-          <div className="relative aspect-square w-[calc(100%_-_2rem)] max-w-[350px]">
+        <div className="flex min-h-0 flex-1 flex-col items-center px-5 pb-28 pt-[clamp(1rem,3dvh,1.75rem)]">
+          <div className="relative aspect-square w-[min(calc(100%_-_2rem),42dvh)] max-w-[350px] shrink-0">
             <svg
               viewBox="0 0 100 100"
               className="absolute inset-0 z-10 size-full -rotate-90"
@@ -605,7 +605,7 @@ export function GuidedPlayer({
               ) : null}
             </div>
             {cornerPreviewExercise ? (
-              <span className="absolute -right-5 top-0 z-20 size-20 overflow-hidden rounded-full border-4 border-white bg-white shadow-lg">
+              <span className="absolute -right-5 top-0 z-20 size-[100px] overflow-hidden rounded-full border-4 border-white bg-white shadow-lg">
                 <Image
                   src={cornerPreviewExercise.image}
                   alt={
@@ -614,7 +614,7 @@ export function GuidedPlayer({
                       : `Next: ${cornerPreviewExercise.name}`
                   }
                   fill
-                  sizes="80px"
+                  sizes="100px"
                   className="object-cover"
                 />
               </span>
@@ -629,7 +629,7 @@ export function GuidedPlayer({
             ) : null}
           </div>
 
-          <div className="mt-7 text-center">
+          <div className="mt-[clamp(1rem,2.5dvh,1.75rem)] text-center">
             {isStartCountdown ? (
               <>
                 <p className="text-3xl font-bold tracking-tight text-slate-950">
@@ -657,7 +657,7 @@ export function GuidedPlayer({
                 </button>
                 {!isTransition ? (
                   <p
-                    className="timer-digits mt-6 text-7xl font-bold tracking-tight text-slate-400"
+                    className="timer-digits mt-[clamp(1rem,2.5dvh,1.5rem)] text-[clamp(3.5rem,9dvh,4.5rem)] font-bold tracking-tight text-slate-400"
                     aria-live="off"
                   >
                     {formatRemaining(displayRemainingMs)}
@@ -704,14 +704,14 @@ export function GuidedPlayer({
         ) : null}
 
         {!isStartCountdown ? (
-          <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-white via-white to-white/0 px-7 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-10">
+          <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-white via-white to-white/0 px-7 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-8">
             <div className="flex items-center justify-center gap-8">
               <button
                 type="button"
                 onClick={() => goToStep(segment.stepIndex - 1)}
                 disabled={segment.stepIndex === 0}
                 aria-label="Previous exercise"
-                className="grid size-16 place-items-center rounded-full bg-white text-slate-800 shadow-[0_10px_35px_rgb(15_23_42/0.14)] disabled:opacity-30"
+                className="grid size-[clamp(3.5rem,9dvh,4rem)] place-items-center rounded-full bg-white text-slate-800 shadow-[0_10px_35px_rgb(15_23_42/0.14)] disabled:opacity-30"
               >
                 <SkipBack className="size-7 fill-current" aria-hidden="true" />
               </button>
@@ -721,7 +721,7 @@ export function GuidedPlayer({
                 aria-label={
                   status === "running" ? "Pause routine" : "Resume routine"
                 }
-                className="grid size-24 place-items-center rounded-full bg-white text-slate-900 shadow-[0_14px_45px_rgb(15_23_42/0.18)]"
+                className="grid size-[clamp(5rem,12dvh,6rem)] place-items-center rounded-full bg-white text-slate-900 shadow-[0_14px_45px_rgb(15_23_42/0.18)]"
               >
                 {status === "running" ? (
                   <Pause className="size-10 fill-current" aria-hidden="true" />
@@ -733,7 +733,7 @@ export function GuidedPlayer({
                 type="button"
                 onClick={() => goToStep(segment.stepIndex + 1)}
                 aria-label="Next exercise"
-                className="grid size-16 place-items-center rounded-full bg-white text-slate-800 shadow-[0_10px_35px_rgb(15_23_42/0.14)]"
+                className="grid size-[clamp(3.5rem,9dvh,4rem)] place-items-center rounded-full bg-white text-slate-800 shadow-[0_10px_35px_rgb(15_23_42/0.14)]"
               >
                 <SkipForward className="size-7 fill-current" aria-hidden="true" />
               </button>

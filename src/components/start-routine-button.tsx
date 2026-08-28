@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { unlockAudio } from "@/lib/audio";
 
-export function StartRoutineButton() {
+export function StartRoutineButton({ routineId }: { routineId: string }) {
   const router = useRouter();
   const [starting, setStarting] = useState(false);
 
@@ -18,7 +18,7 @@ export function StartRoutineButton() {
     setStarting(true);
     await unlockAudio();
     window.sessionStorage.setItem("bend-lite-autostart", "true");
-    router.push("/play");
+    router.push(`/play/${routineId}`);
   }
 
   return (
