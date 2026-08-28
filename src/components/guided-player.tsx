@@ -32,12 +32,17 @@ import {
 } from "@/lib/audio";
 
 type PlayerStatus = "idle" | "running" | "paused" | "complete";
-type SegmentKind = "exercise" | "side-transition" | "exercise-transition";
+type SegmentKind =
+  | "start-countdown"
+  | "exercise"
+  | "side-transition"
+  | "exercise-transition";
 
 type PlayerSegment = {
   kind: SegmentKind;
   durationMs: number;
   exerciseId: string;
+  nextExerciseId?: string;
   stepIndex: number;
   side?: 1 | 2;
 };
@@ -54,9 +59,21 @@ type GuidedPlayerProps = {
 
 const CIRCLE_RADIUS = 47;
 const CIRCLE_LENGTH = 2 * Math.PI * CIRCLE_RADIUS;
+const START_COUNTDOWN_MS = 5_000;
+const NEXT_UP_CUE_MS = 4_000;
 
 function buildSegments(routine: Routine): PlayerSegment[] {
   const segments: PlayerSegment[] = [];
+  const firstStep = routine.steps[0];
+
+  if (firstStep) {
+    segments.push({
+      kind: "start-countdown",
+      durationMs: START_COUNTDOWN_MS,
+      exerciseId: firstStep.exerciseId,
+      stepIndex: 0,
+    });
+  }
 
   routine.steps.forEach((step, stepIndex) => {
     if (step.switchSides) {
@@ -96,6 +113,7 @@ function buildSegments(routine: Routine): PlayerSegment[] {
         kind: "exercise-transition",
         durationMs: routine.exerciseTransitionSeconds * 1000,
         exerciseId: nextStep.exerciseId,
+        nextExerciseId: nextStep.exerciseId,
         stepIndex: stepIndex + 1,
       });
     }
@@ -108,6 +126,26 @@ function formatRemaining(milliseconds: number): string {
   const totalSeconds = Math.max(0, Math.ceil(milliseconds / 1000));
   const minutes = Math.floor(totalSeconds / 60);
   return `${minutes}:${String(totalSeconds % 60).padStart(2, "0")}`;
+}
+
+function RoutineProgressBar({ progress }: { progress: number }) {
+  const percentage = Math.round(progress * 100);
+
+  return (
+    <div
+      className="absolute inset-x-0 top-0 z-30 h-1.5 bg-slate-100"
+      role="progressbar"
+      aria-label="Routine progress"
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={percentage}
+    >
+      <div
+        className="h-full bg-[var(--brand)] transition-[width] duration-75"
+        style={{ width: `${progress * 100}%` }}
+      />
+    </div>
+  );
 }
 
 export function GuidedPlayer({
@@ -126,10 +164,47 @@ export function GuidedPlayer({
   const frameRef = useRef<number | null>(null);
   const announcedSegmentRef = useRef(-1);
   const beepSecondRef = useRef<number | null>(null);
+  const nextCuePlayedRef = useRef(false);
   const wakeLockRef = useRef<WakeLockHandle | null>(null);
 
   const segment = segments[segmentIndex];
   const exercise = segment ? exerciseMap[segment.exerciseId] : undefined;
+  const upcomingExercise = segment?.nextExerciseId
+    ? exerciseMap[segment.nextExerciseId]
+    : undefined;
+  const routineDurationMs = useMemo(
+    () =>
+      segments.reduce(
+        (total, candidate) =>
+          candidate.kind === "start-countdown"
+            ? total
+            : total + candidate.durationMs,
+        0,
+      ),
+    [segments],
+  );
+  const elapsedBeforeSegmentMs = useMemo(
+    () =>
+      segments.slice(0, segmentIndex).reduce(
+        (total, candidate) =>
+          candidate.kind === "start-countdown"
+            ? total
+            : total + candidate.durationMs,
+        0,
+      ),
+    [segmentIndex, segments],
+  );
+  const elapsedInSegmentMs =
+    segment && segment.kind !== "start-countdown"
+      ? Math.max(0, segment.durationMs - remainingMs)
+      : 0;
+  const routineProgress =
+    routineDurationMs > 0
+      ? Math.min(
+          1,
+          (elapsedBeforeSegmentMs + elapsedInSegmentMs) / routineDurationMs,
+        )
+      : 0;
 
   const finishRoutine = useCallback(() => {
     setStatus("complete");
@@ -164,6 +239,7 @@ export function GuidedPlayer({
       remainingRef.current = nextRemaining;
       announcedSegmentRef.current = -1;
       beepSecondRef.current = null;
+      nextCuePlayedRef.current = false;
       setRemainingMs(nextRemaining);
       setShowDetails(false);
       setSegmentIndex(nextIndex);
@@ -180,16 +256,32 @@ export function GuidedPlayer({
     let lastPaintAt = 0;
 
     const tick = (now: number) => {
-      const currentRemaining = deadlineRef.current - now;
+      const currentRemaining = deadlineRef.current - performance.now();
       if (currentRemaining <= 0) {
         advanceSegment(Math.abs(currentRemaining));
         return;
       }
 
       remainingRef.current = currentRemaining;
-      const beepSecond = Math.ceil(currentRemaining / 1000);
+      const followingSegment = segments[segmentIndex + 1];
       if (
         segment?.kind === "exercise" &&
+        followingSegment?.kind === "exercise-transition" &&
+        followingSegment.nextExerciseId &&
+        currentRemaining <= NEXT_UP_CUE_MS &&
+        !nextCuePlayedRef.current
+      ) {
+        const nextExercise = exerciseMap[followingSegment.nextExerciseId];
+        if (nextExercise) {
+          nextCuePlayedRef.current = true;
+          speak(`Next up, ${nextExercise.name}.`);
+        }
+      }
+
+      const beepSecond = Math.ceil(currentRemaining / 1000);
+      if (
+        (segment?.kind === "exercise" ||
+          segment?.kind === "start-countdown") &&
         beepSecond <= 3 &&
         beepSecond > 0 &&
         beepSecondRef.current !== beepSecond
@@ -211,7 +303,14 @@ export function GuidedPlayer({
         cancelAnimationFrame(frameRef.current);
       }
     };
-  }, [advanceSegment, segment?.kind, segmentIndex, status]);
+  }, [
+    advanceSegment,
+    exerciseMap,
+    segment?.kind,
+    segmentIndex,
+    segments,
+    status,
+  ]);
 
   useEffect(() => {
     if (status !== "running" || !segment || !exercise) {
@@ -224,12 +323,13 @@ export function GuidedPlayer({
     announcedSegmentRef.current = segmentIndex;
     beepSecondRef.current = null;
 
-    if (segment.kind === "side-transition") {
+    if (segment.kind === "start-countdown") {
+      speak(`Get ready. Starting with ${exercise.name}.`);
+    } else if (segment.kind === "side-transition") {
       playTransitionChime();
       speak("Switch sides.");
     } else if (segment.kind === "exercise-transition") {
       playTransitionChime();
-      speak(`Next, ${exercise.name}.`);
     } else if (segment.side === 2) {
       // The preceding transition already announces the side switch.
     } else {
@@ -328,6 +428,7 @@ export function GuidedPlayer({
     remainingRef.current = targetDuration;
     announcedSegmentRef.current = -1;
     beepSecondRef.current = null;
+    nextCuePlayedRef.current = false;
     setRemainingMs(targetDuration);
     setShowDetails(false);
     setSegmentIndex(targetIndex);
@@ -339,6 +440,7 @@ export function GuidedPlayer({
     remainingRef.current = firstDuration;
     announcedSegmentRef.current = -1;
     beepSecondRef.current = null;
+    nextCuePlayedRef.current = false;
     setRemainingMs(firstDuration);
     setSegmentIndex(0);
     setStatus("running");
@@ -346,7 +448,8 @@ export function GuidedPlayer({
 
   if (status === "complete") {
     return (
-      <main className="mx-auto flex min-h-dvh w-full max-w-[440px] flex-col items-center justify-center bg-white px-8 text-center sm:my-5 sm:min-h-[calc(100dvh-2.5rem)] sm:rounded-[2rem] sm:shadow-xl">
+      <main className="relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col items-center justify-center overflow-hidden bg-white px-8 text-center sm:my-5 sm:min-h-[calc(100dvh-2.5rem)] sm:rounded-[2rem] sm:shadow-xl">
+        <RoutineProgressBar progress={1} />
         <div className="grid size-28 place-items-center rounded-full bg-sky-50 text-[var(--brand)]">
           <Check className="size-14" strokeWidth={2.5} aria-hidden="true" />
         </div>
@@ -384,6 +487,10 @@ export function GuidedPlayer({
     return null;
   }
 
+  const displayExercise =
+    segment.kind === "exercise-transition" && upcomingExercise
+      ? upcomingExercise
+      : exercise;
   const activeStep = routine.steps[segment.stepIndex];
   const isSplitExercise =
     segment.kind === "exercise" && activeStep.switchSides && segment.side;
@@ -400,9 +507,23 @@ export function GuidedPlayer({
     : segment.durationMs > 0
       ? 1 - Math.min(1, remainingMs / segment.durationMs)
       : 1;
-  const isTransition = segment.kind !== "exercise";
+  const isStartCountdown = segment.kind === "start-countdown";
+  const isTransition =
+    segment.kind === "side-transition" ||
+    segment.kind === "exercise-transition";
+  const followingSegment = segments[segmentIndex + 1];
+  const cornerPreviewExercise = isStartCountdown
+    ? exercise
+    : segment.kind === "exercise" &&
+        remainingMs <= NEXT_UP_CUE_MS &&
+        followingSegment?.kind === "exercise-transition" &&
+        followingSegment.nextExerciseId
+      ? exerciseMap[followingSegment.nextExerciseId]
+      : undefined;
   const phaseLabel =
-    segment.kind === "side-transition"
+    isStartCountdown
+      ? "Get ready"
+      : segment.kind === "side-transition"
       ? "Switch sides"
       : segment.kind === "exercise-transition"
         ? "Up next"
@@ -413,6 +534,7 @@ export function GuidedPlayer({
   return (
     <div className="min-h-dvh bg-slate-100 sm:py-5">
       <main className="relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col overflow-hidden bg-white sm:min-h-[calc(100dvh-2.5rem)] sm:rounded-[2rem] sm:shadow-xl">
+        <RoutineProgressBar progress={routineProgress} />
         <header className="flex items-center justify-between border-b border-slate-100 px-4 pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))]">
           <Link
             href="/"
@@ -468,11 +590,35 @@ export function GuidedPlayer({
                 alt={`${exercise.name} illustration`}
                 fill
                 sizes="(max-width: 440px) 88vw, 350px"
-                className="object-cover"
+                className={`object-cover ${isStartCountdown ? "opacity-0" : "opacity-100"}`}
                 loading={segment.stepIndex === 0 ? "eager" : "lazy"}
               />
+              {isStartCountdown ? (
+                <div className="absolute inset-0 grid place-items-center bg-sky-50">
+                  <span
+                    className="timer-digits text-8xl font-bold text-[var(--brand)]"
+                    aria-live="polite"
+                  >
+                    {Math.max(1, Math.ceil(remainingMs / 1000))}
+                  </span>
+                </div>
+              ) : null}
             </div>
-            {activeStep.switchSides ? (
+            {cornerPreviewExercise ? (
+              <span className="absolute -right-5 top-0 z-20 size-20 overflow-hidden rounded-full border-4 border-white bg-white shadow-lg">
+                <Image
+                  src={cornerPreviewExercise.image}
+                  alt={
+                    isStartCountdown
+                      ? `Starting with ${cornerPreviewExercise.name}`
+                      : `Next: ${cornerPreviewExercise.name}`
+                  }
+                  fill
+                  sizes="80px"
+                  className="object-cover"
+                />
+              </span>
+            ) : activeStep.switchSides && !isStartCountdown ? (
               <span
                 className="absolute -right-5 top-0 z-20 grid size-12 place-items-center rounded-full border-2 border-white bg-white text-[var(--brand)] shadow-md"
                 title="Switch sides halfway"
@@ -484,33 +630,46 @@ export function GuidedPlayer({
           </div>
 
           <div className="mt-7 text-center">
-            {isTransition ? (
-              <p className="mb-2 text-xl font-bold tracking-[0.1em] text-[var(--brand)] uppercase">
-                {phaseLabel}
-              </p>
-            ) : null}
-            <button
-              type="button"
-              onClick={() => setShowDetails((visible) => !visible)}
-              className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[2rem] font-bold tracking-tight text-slate-950"
-              aria-expanded={showDetails}
-            >
-              {exercise.name}
-              <Info className="size-5 text-slate-300" aria-hidden="true" />
-            </button>
-            {!isTransition ? (
-              <p
-                className="timer-digits mt-6 text-7xl font-bold tracking-tight text-slate-400"
-                aria-live="off"
-              >
-                {formatRemaining(displayRemainingMs)}
-              </p>
+            {isStartCountdown ? (
+              <>
+                <p className="text-3xl font-bold tracking-tight text-slate-950">
+                  Get ready
+                </p>
+                <p className="mt-3 text-xl font-semibold text-slate-500">
+                  Starting with {displayExercise.name}
+                </p>
+              </>
             ) : (
-              <div className="h-[4.5rem]" aria-hidden="true" />
+              <>
+                {isTransition ? (
+                  <p className="mb-2 text-xl font-bold tracking-[0.1em] text-[var(--brand)] uppercase">
+                    {phaseLabel}
+                  </p>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={() => setShowDetails((visible) => !visible)}
+                  className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[2rem] font-bold tracking-tight text-slate-950"
+                  aria-expanded={showDetails}
+                >
+                  {displayExercise.name}
+                  <Info className="size-5 text-slate-300" aria-hidden="true" />
+                </button>
+                {!isTransition ? (
+                  <p
+                    className="timer-digits mt-6 text-7xl font-bold tracking-tight text-slate-400"
+                    aria-live="off"
+                  >
+                    {formatRemaining(displayRemainingMs)}
+                  </p>
+                ) : (
+                  <div className="h-[4.5rem]" aria-hidden="true" />
+                )}
+              </>
             )}
           </div>
 
-          {showDetails ? (
+          {showDetails && !isStartCountdown ? (
             <section className="mt-7 w-full rounded-3xl bg-slate-50 p-5 text-left">
               <button
                 type="button"
@@ -521,7 +680,7 @@ export function GuidedPlayer({
                 <ChevronDown className="size-4" aria-hidden="true" />
               </button>
               <ol className="mt-3 space-y-2 pl-5 text-sm leading-6 text-slate-600">
-                {exercise.instructions.map((instruction) => (
+                {displayExercise.instructions.map((instruction) => (
                   <li key={instruction} className="list-decimal pl-1">
                     {instruction}
                   </li>
@@ -544,39 +703,43 @@ export function GuidedPlayer({
           </div>
         ) : null}
 
-        <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-white via-white to-white/0 px-7 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-10">
-          <div className="flex items-center justify-center gap-8">
-            <button
-              type="button"
-              onClick={() => goToStep(segment.stepIndex - 1)}
-              disabled={segment.stepIndex === 0}
-              aria-label="Previous exercise"
-              className="grid size-16 place-items-center rounded-full bg-white text-slate-800 shadow-[0_10px_35px_rgb(15_23_42/0.14)] disabled:opacity-30"
-            >
-              <SkipBack className="size-7 fill-current" aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              onClick={status === "running" ? pause : startOrResume}
-              aria-label={status === "running" ? "Pause routine" : "Resume routine"}
-              className="grid size-24 place-items-center rounded-full bg-white text-slate-900 shadow-[0_14px_45px_rgb(15_23_42/0.18)]"
-            >
-              {status === "running" ? (
-                <Pause className="size-10 fill-current" aria-hidden="true" />
-              ) : (
-                <Play className="ml-1 size-10 fill-current" aria-hidden="true" />
-              )}
-            </button>
-            <button
-              type="button"
-              onClick={() => goToStep(segment.stepIndex + 1)}
-              aria-label="Next exercise"
-              className="grid size-16 place-items-center rounded-full bg-white text-slate-800 shadow-[0_10px_35px_rgb(15_23_42/0.14)]"
-            >
-              <SkipForward className="size-7 fill-current" aria-hidden="true" />
-            </button>
+        {!isStartCountdown ? (
+          <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-white via-white to-white/0 px-7 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-10">
+            <div className="flex items-center justify-center gap-8">
+              <button
+                type="button"
+                onClick={() => goToStep(segment.stepIndex - 1)}
+                disabled={segment.stepIndex === 0}
+                aria-label="Previous exercise"
+                className="grid size-16 place-items-center rounded-full bg-white text-slate-800 shadow-[0_10px_35px_rgb(15_23_42/0.14)] disabled:opacity-30"
+              >
+                <SkipBack className="size-7 fill-current" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={status === "running" ? pause : startOrResume}
+                aria-label={
+                  status === "running" ? "Pause routine" : "Resume routine"
+                }
+                className="grid size-24 place-items-center rounded-full bg-white text-slate-900 shadow-[0_14px_45px_rgb(15_23_42/0.18)]"
+              >
+                {status === "running" ? (
+                  <Pause className="size-10 fill-current" aria-hidden="true" />
+                ) : (
+                  <Play className="ml-1 size-10 fill-current" aria-hidden="true" />
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={() => goToStep(segment.stepIndex + 1)}
+                aria-label="Next exercise"
+                className="grid size-16 place-items-center rounded-full bg-white text-slate-800 shadow-[0_10px_35px_rgb(15_23_42/0.14)]"
+              >
+                <SkipForward className="size-7 fill-current" aria-hidden="true" />
+              </button>
+            </div>
           </div>
-        </div>
+        ) : null}
       </main>
     </div>
   );
