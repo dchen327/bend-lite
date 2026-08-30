@@ -2,6 +2,7 @@ import { ChevronRight, Clock3 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { AppBottomNav } from "@/components/app-bottom-nav";
 import { exercises } from "@/data/exercises";
 import { routines } from "@/data/routines";
 import {
@@ -28,7 +29,7 @@ export default function Home() {
 
   return (
     <div className="min-h-dvh bg-slate-100 sm:py-5">
-      <main className="mx-auto min-h-dvh w-full max-w-[440px] bg-white pb-[calc(2rem+env(safe-area-inset-bottom))] shadow-xl shadow-slate-300/30 sm:min-h-[calc(100dvh-2.5rem)] sm:rounded-[2rem]">
+      <main className="mx-auto min-h-dvh w-full max-w-[440px] bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom))] shadow-xl shadow-slate-300/30 sm:min-h-[calc(100dvh-2.5rem)] sm:rounded-[2rem]">
         <header className="sticky top-0 z-20 border-b border-slate-100 bg-white/95 px-5 pb-5 pt-[calc(1.25rem+env(safe-area-inset-top))] backdrop-blur">
           <h1 className="text-3xl font-bold tracking-tight text-slate-950">
             My routines
@@ -88,6 +89,7 @@ export default function Home() {
           ))}
         </section>
       </main>
+      <AppBottomNav />
     </div>
   );
 }

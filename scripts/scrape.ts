@@ -44,16 +44,24 @@ type ParsedExercise = Omit<Exercise, "id" | "image"> & {
   imageFile: string;
 };
 
+type ParsedRoutineStep = {
+  imageFile: string;
+  durationSeconds: number;
+};
+
 type ParsedRoutine = {
   slug: string;
   name: string;
   description: string;
   totalMinutes: number;
-  exerciseImageFiles: string[];
+  steps: ParsedRoutineStep[];
 };
 
-type BendRoutine = Omit<ParsedRoutine, "exerciseImageFiles"> & {
-  exerciseIds: string[];
+type BendRoutine = Omit<ParsedRoutine, "steps"> & {
+  steps: {
+    exerciseId: string;
+    durationSeconds: number;
+  }[];
 };
 
 type Options = {
@@ -209,6 +217,14 @@ function parseImageFile(source: string): string {
   return imageFile;
 }
 
+function parseDurationSeconds(value: string | undefined): number {
+  const seconds = value?.match(/^PT(\d+)S$/)?.[1];
+  if (!seconds) {
+    throw new Error(`Unsupported exercise duration "${value ?? "missing"}".`);
+  }
+  return Number.parseInt(seconds, 10);
+}
+
 function parseRoutinePage(
   slug: string,
   html: string,
@@ -220,6 +236,27 @@ function parseRoutinePage(
   const description = cleanText(header.find("p").first().text());
   const totalMinutes = Number.parseInt(header.find("time").first().text(), 10);
   const exercises: ParsedExercise[] = [];
+  const overviewHeading = $("h2")
+    .filter((_, element) => cleanText($(element).text()) === "Exercise Overview")
+    .first();
+  const steps = overviewHeading
+    .parent()
+    .find("ol > li")
+    .map((_, element) => {
+      const item = $(element);
+      const imageSource = item.find("img").first().attr("src");
+      if (!imageSource) {
+        throw new Error(`Routine "${slug}" contains an incomplete overview step.`);
+      }
+
+      return {
+        imageFile: parseImageFile(imageSource),
+        durationSeconds: parseDurationSeconds(
+          item.find("time").first().attr("datetime"),
+        ),
+      };
+    })
+    .get();
 
   $("article")
     .filter((_, element) => $(element).find("section").length > 0)
@@ -269,9 +306,23 @@ function parseRoutinePage(
       });
     });
 
-  if (!name || !description || !Number.isFinite(totalMinutes) || exercises.length === 0) {
+  if (
+    !name ||
+    !description ||
+    !Number.isFinite(totalMinutes) ||
+    exercises.length === 0 ||
+    steps.length !== exercises.length
+  ) {
     throw new Error(`Routine "${slug}" is missing required metadata or exercises.`);
   }
+
+  steps.forEach((step, index) => {
+    if (step.imageFile !== exercises[index].imageFile) {
+      throw new Error(
+        `Routine "${slug}" has mismatched overview and instruction steps at position ${index + 1}.`,
+      );
+    }
+  });
 
   return {
     routine: {
@@ -279,7 +330,7 @@ function parseRoutinePage(
       name,
       description,
       totalMinutes,
-      exerciseImageFiles: exercises.map((exercise) => exercise.imageFile),
+      steps,
     },
     exercises,
   };
@@ -376,10 +427,10 @@ function buildLibrary(parsedPages: ReturnType<typeof parseRoutinePage>[]) {
     name: routine.name,
     description: routine.description,
     totalMinutes: routine.totalMinutes,
-    exerciseIds: routine.exerciseImageFiles.map((imageFile) => {
-      const id = imageToId.get(imageFile);
-      if (!id) throw new Error(`No exercise id found for ${imageFile}.`);
-      return id;
+    steps: routine.steps.map(({ imageFile, durationSeconds }) => {
+      const exerciseId = imageToId.get(imageFile);
+      if (!exerciseId) throw new Error(`No exercise id found for ${imageFile}.`);
+      return { exerciseId, durationSeconds };
     }),
   }));
 
@@ -441,7 +492,10 @@ export const exercises: Record<string, Exercise> = ${JSON.stringify(exercises, n
   name: string;
   description: string;
   totalMinutes: number;
-  exerciseIds: string[];
+  steps: {
+    exerciseId: string;
+    durationSeconds: number;
+  }[];
 };
 
 export const bendRoutines: BendRoutine[] = ${JSON.stringify(routines, null, 2)};

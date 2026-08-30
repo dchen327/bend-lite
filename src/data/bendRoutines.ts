@@ -5,7 +5,10 @@ export type BendRoutine = {
   name: string;
   description: string;
   totalMinutes: number;
-  exerciseIds: string[];
+  steps: {
+    exerciseId: string;
+    durationSeconds: number;
+  }[];
 };
 
 export const bendRoutines: BendRoutine[] = [
@@ -14,15 +17,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Wake Up",
     "description": "A simple routine to maintain your body's natural mobility and range of motion. Quick, convenient, and effective. Do it anytime, anywhere, everyday.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "upward-salute",
-      "toe-touch",
-      "lunge",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "wide-leg-bend",
-      "upward-salute"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -30,15 +57,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Posture Reset",
     "description": "Improve your posture with seated stretches designed to correct habitual posture problems by increasing flexibility in the shoulders, back, and neck.",
     "totalMinutes": 4,
-    "exerciseIds": [
-      "seated-shoulder-rolls",
-      "overhead-reach",
-      "seated-side-bend",
-      "seated-cactus-arms",
-      "neck-flex",
-      "neck-roll",
-      "neck-laterals",
-      "seated-diver"
+    "steps": [
+      {
+        "exerciseId": "seated-shoulder-rolls",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "overhead-reach",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-side-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-cactus-arms",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-flex",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-laterals",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-diver",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -46,28 +97,91 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Full Body",
     "description": "A comprehensive routine focused on improving overall flexibility. Move through 20+ stretches targeting key muscles and joints throughout your entire body.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "upward-salute",
-      "toe-touch",
-      "standing-chest-opener",
-      "wide-leg-bend",
-      "side-lunge",
-      "lunge",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "thunderbolt",
-      "pigeon",
-      "seated-twist",
-      "knees-to-chest",
-      "lying-figure-four",
-      "lying-hamstring",
-      "reclined-butterfly",
-      "spinal-twist",
-      "quad-stretch",
-      "butterfly",
-      "seated-fold",
-      "plow"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "thunderbolt",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-hamstring",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -75,16 +189,43 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Sleep",
     "description": "Unwind and de-stress with gentle, long-hold stretches designed to improve sleep quality by relieving muscle tension and relaxing the body.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "rag-doll",
-      "upward-dog",
-      "childs-pose",
-      "knees-to-chest",
-      "happy-baby",
-      "reclined-butterfly",
-      "spinal-twist",
-      "quad-stretch",
-      "legs-up-wall"
+    "steps": [
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "legs-up-wall",
+        "durationSeconds": 120
+      }
     ]
   },
   {
@@ -92,49 +233,175 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Expert",
     "description": "An advanced routine covering all major muscle groups and extremities. Movements range in their level of complexity to promote greater flexibility and range of motion.",
     "totalMinutes": 30,
-    "exerciseIds": [
-      "upward-salute",
-      "rag-doll",
-      "standing-chest-opener",
-      "toe-touch",
-      "standing-overhead-tricep",
-      "forward-fold",
-      "standing-one-arm-hug",
-      "wide-leg-bend",
-      "side-lunge",
-      "squat-stretch",
-      "lunge",
-      "reverse-lunge",
-      "kneeling-quad",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "thunderbolt",
-      "saddle-pose",
-      "toe-squat",
-      "wrist-extension",
-      "lizard-pose",
-      "pigeon",
-      "frog-pose",
-      "puppy-pose",
-      "twisted-sphinx",
-      "seated-twist",
-      "knees-to-chest",
-      "happy-baby",
-      "lying-figure-four",
-      "lying-hamstring",
-      "reclined-butterfly",
-      "spinal-twist",
-      "quad-stretch",
-      "butterfly",
-      "folded-butterfly",
-      "double-pigeon",
-      "seated-fold",
-      "seated-straddle",
-      "hurdler",
-      "shoulder-stand",
-      "plow",
-      "legs-up-wall"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "squat-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "thunderbolt",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "saddle-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-squat",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wrist-extension",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "frog-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "puppy-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "twisted-sphinx",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-hamstring",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "folded-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "double-pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-straddle",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "shoulder-stand",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "legs-up-wall",
+        "durationSeconds": 120
+      }
     ]
   },
   {
@@ -142,18 +409,51 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lengthen",
     "description": "Get taller and stand straighter with a daily stretch routine designed to reverse spinal compression and improve your posture.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "upward-salute",
-      "toe-touch",
-      "standing-chest-opener",
-      "wide-leg-bend",
-      "lunge",
-      "upward-dog",
-      "downward-dog",
-      "childs-pose",
-      "knees-to-chest",
-      "seated-fold",
-      "plow"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -161,14 +461,35 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Post-Run 2",
     "description": "Improve your stride, speed, and recovery with post-run stretches designed to reduce soreness, prevent injury, and increase your range of motion.",
     "totalMinutes": 7,
-    "exerciseIds": [
-      "standing-quad",
-      "wide-leg-bend",
-      "leaning-calf",
-      "side-lunge",
-      "lunge",
-      "lying-hamstring",
-      "lying-figure-four"
+    "steps": [
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "leaning-calf",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-hamstring",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -176,16 +497,43 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Detox",
     "description": "A series of detoxifying movements and twists that will compress and release organs, delivering oxygen-rich blood while pushing out toxins.",
     "totalMinutes": 8,
-    "exerciseIds": [
-      "wide-leg-bend",
-      "upward-dog",
-      "downward-dog",
-      "cat-cow",
-      "seated-twist",
-      "spinal-twist",
-      "locust-pose",
-      "shoulder-stand",
-      "plow"
+    "steps": [
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "locust-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "shoulder-stand",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -193,14 +541,35 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Desk Stretch",
     "description": "Break up the work day and get the blood flowing with a refreshing, full-body routine that can be done right from your desk.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "seated-figure-four",
-      "seated-hamstring",
-      "trunk-rotation",
-      "seated-chest-opener",
-      "seated-one-arm-hug",
-      "seated-overhead-tricep",
-      "forearm-stretch"
+    "steps": [
+      {
+        "exerciseId": "seated-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-hamstring",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "trunk-rotation",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "forearm-stretch",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -208,15 +577,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Quick Stretch",
     "description": "A quick, convenient routine for whenever you need it. Great for after a workout or a long day at work (or on the couch).",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "standing-chest-opener",
-      "standing-overhead-tricep",
-      "wide-leg-bend",
-      "side-lunge",
-      "lunge",
-      "upward-dog",
-      "downward-dog",
-      "toe-touch"
+    "steps": [
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -224,16 +617,43 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hips",
     "description": "Open and unlock tight hips with deep, focused stretches designed to improve hip flexibility and undo hours of inactivity from sitting at a desk, in a car, or on the couch.",
     "totalMinutes": 13,
-    "exerciseIds": [
-      "lizard-pose",
-      "pigeon",
-      "folded-butterfly",
-      "happy-baby",
-      "lying-figure-four",
-      "frog-pose",
-      "squat-stretch",
-      "double-pigeon",
-      "reclined-butterfly"
+    "steps": [
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "folded-butterfly",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "frog-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "squat-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "double-pigeon",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -241,15 +661,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hamstrings",
     "description": "Improve hamstring flexibility with subtle stretches designed to reduce hamstring tightness and relieve pressure on the knees, pelvis, and lower back.",
     "totalMinutes": 12,
-    "exerciseIds": [
-      "rag-doll",
-      "wide-leg-bend",
-      "side-lunge",
-      "reverse-lunge",
-      "seated-fold",
-      "hurdler",
-      "seated-straddle",
-      "hamstring-pulls"
+    "steps": [
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "seated-straddle",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hamstring-pulls",
+        "durationSeconds": 120
+      }
     ]
   },
   {
@@ -257,18 +701,51 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Back",
     "description": "Reduce and prevent lower back pain with gentle stretches designed to increase flexibility in the lower back, pelvis, and hip flexors.",
     "totalMinutes": 13,
-    "exerciseIds": [
-      "rag-doll",
-      "lunge",
-      "childs-pose",
-      "cat-cow",
-      "thunderbolt",
-      "seated-fold",
-      "seated-straddle",
-      "knees-to-chest",
-      "lying-figure-four",
-      "happy-baby",
-      "legs-up-wall"
+    "steps": [
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "thunderbolt",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-straddle",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "legs-up-wall",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -276,16 +753,43 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Shoulders",
     "description": "Achieve a full range of motion in your shoulders with long-hold stretches designed to restore shoulder mobility, relieve neck and back tension, and improve posture.",
     "totalMinutes": 11,
-    "exerciseIds": [
-      "upward-salute",
-      "standing-chest-opener",
-      "standing-overhead-tricep",
-      "standing-one-arm-hug",
-      "wall-dog",
-      "forward-fold",
-      "shoulder-cross",
-      "shoulder-opener",
-      "childs-pose"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wall-dog",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "forward-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "shoulder-cross",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "shoulder-opener",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -293,14 +797,35 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Splits",
     "description": "Splits are one of the ultimate flexibility milestones. Deepen your front splits with a daily routine designed to target your hips, hamstrings, and glutes.",
     "totalMinutes": 14,
-    "exerciseIds": [
-      "reverse-lunge",
-      "lizard-pose",
-      "hamstring-pulls",
-      "kneeling-quad",
-      "side-lunge",
-      "lunge",
-      "front-split"
+    "steps": [
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "hamstring-pulls",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "front-split",
+        "durationSeconds": 120
+      }
     ]
   },
   {
@@ -308,17 +833,47 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Warm Up",
     "description": "Prepare your body for physical activity with dynamic movements designed to elevate your body temperature, increase blood flow to muscles, and loosen up joints.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "jumping-jacks",
-      "air-squats",
-      "lateral-lunge",
-      "arm-circles",
-      "arm-swings",
-      "trunk-twist",
-      "toe-touch-twist",
-      "knees-hugs",
-      "leg-swings",
-      "knee-circles"
+    "steps": [
+      {
+        "exerciseId": "jumping-jacks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "air-squats",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lateral-lunge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "trunk-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-hugs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "leg-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knee-circles",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -326,17 +881,47 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Twists & Wrists",
     "description": "Twisting actions targeting the upper, middle, and lower spine combined with wrists and ankle stretches to strengthen important muscles around your joints.",
     "totalMinutes": 11,
-    "exerciseIds": [
-      "rag-doll",
-      "forward-fold",
-      "upward-dog",
-      "twisted-sphinx",
-      "seated-twist",
-      "toe-squat",
-      "wrist-extension",
-      "wrist-flexion",
-      "spinal-twist",
-      "plow"
+    "steps": [
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "forward-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "twisted-sphinx",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "toe-squat",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wrist-extension",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wrist-flexion",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -344,19 +929,55 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Cool Down",
     "description": "Light, easy stretches while your body transitions to a resting state. Post-workout stretching promotes blood flow for recovery and reduces the risk of injury.",
     "totalMinutes": 8,
-    "exerciseIds": [
-      "upward-salute",
-      "toe-touch",
-      "upward-dog",
-      "childs-pose",
-      "knees-to-chest",
-      "lying-figure-four",
-      "reclined-butterfly",
-      "spinal-twist",
-      "quad-stretch",
-      "butterfly",
-      "seated-fold",
-      "plow"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -364,16 +985,43 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Standing Desk",
     "description": "A quick series of standing stretches focused primarily on reducing tightness and increasing mobility in the shoulders, lower back, and neck.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "upward-salute",
-      "toe-touch",
-      "standing-chest-opener",
-      "standing-one-arm-hug",
-      "standing-overhead-tricep",
-      "wall-dog",
-      "standing-quad",
-      "leaning-calf",
-      "rag-doll"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "leaning-calf",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -381,22 +1029,67 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Deep Relax",
     "description": "Activate your parasympathetic nervous system and alleviate stress with relaxing, long-hold stretches and focused breathing.",
     "totalMinutes": 20,
-    "exerciseIds": [
-      "upward-salute",
-      "rag-doll",
-      "upward-dog",
-      "childs-pose",
-      "knees-to-chest",
-      "lying-figure-four",
-      "spinal-twist",
-      "quad-stretch",
-      "seated-fold",
-      "butterfly",
-      "folded-butterfly",
-      "happy-baby",
-      "plow",
-      "reclined-butterfly",
-      "legs-up-wall"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "folded-butterfly",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "legs-up-wall",
+        "durationSeconds": 120
+      }
     ]
   },
   {
@@ -404,11 +1097,23 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Long Hips 1",
     "description": "Long-hold poses designed to improve hip flexibility by targeting select muscle groups in the hips.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "frog-pose",
-      "lizard-pose",
-      "seated-straddle",
-      "reclined-butterfly"
+    "steps": [
+      {
+        "exerciseId": "frog-pose",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 240
+      },
+      {
+        "exerciseId": "seated-straddle",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 120
+      }
     ]
   },
   {
@@ -416,11 +1121,23 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Long Hips 2",
     "description": "Long-hold poses designed to improve hip flexibility by targeting select muscle groups in the hips.",
     "totalMinutes": 11,
-    "exerciseIds": [
-      "squat-stretch",
-      "lunge",
-      "lying-figure-four",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "squat-stretch",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 240
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 180
+      }
     ]
   },
   {
@@ -428,11 +1145,23 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Long Hips 3",
     "description": "Long-hold poses designed to improve hip flexibility by targeting select muscle groups in the hips.",
     "totalMinutes": 12,
-    "exerciseIds": [
-      "kneeling-quad",
-      "double-pigeon",
-      "pigeon",
-      "folded-butterfly"
+    "steps": [
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 120
+      },
+      {
+        "exerciseId": "double-pigeon",
+        "durationSeconds": 240
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 240
+      },
+      {
+        "exerciseId": "folded-butterfly",
+        "durationSeconds": 120
+      }
     ]
   },
   {
@@ -440,10 +1169,19 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Planks 1",
     "description": "A series of plank poses activating all of the muscles in your core. A strong core improves posture and balance, increases flexibility, and reduces lower back pain.",
     "totalMinutes": 2,
-    "exerciseIds": [
-      "hand-plank",
-      "elbow-plank",
-      "elbow-side-plank"
+    "steps": [
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -451,13 +1189,31 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Planks 2",
     "description": "A series of plank poses activating all of the muscles in your core. A strong core improves posture and balance, increases flexibility, and reduces lower back pain.",
     "totalMinutes": 3,
-    "exerciseIds": [
-      "hand-plank",
-      "hand-plank-leg-lift",
-      "hand-side-plank",
-      "elbow-plank",
-      "elbow-plank-leg-lift",
-      "elbow-side-plank"
+    "steps": [
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -465,15 +1221,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Planks 3",
     "description": "A series of plank poses activating all of the muscles in your core. A strong core improves posture and balance, increases flexibility, and reduces lower back pain.",
     "totalMinutes": 4,
-    "exerciseIds": [
-      "hand-plank",
-      "hand-plank-leg-lift",
-      "hand-side-plank",
-      "hand-side-plank-leg-lift",
-      "elbow-plank",
-      "elbow-plank-leg-lift",
-      "elbow-side-plank",
-      "elbow-side-plank-leg-lift"
+    "steps": [
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-side-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank-leg-lift",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -481,17 +1261,47 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Planks 4",
     "description": "A series of plank poses activating all of the muscles in your core. A strong core improves posture and balance, increases flexibility, and reduces lower back pain.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "hand-plank",
-      "hand-plank-leg-lift",
-      "single-arm-plank",
-      "bird-dog-plank",
-      "hand-side-plank",
-      "hand-side-plank-leg-lift",
-      "elbow-plank",
-      "elbow-plank-leg-lift",
-      "elbow-side-plank",
-      "elbow-side-plank-leg-lift"
+    "steps": [
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-arm-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bird-dog-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-side-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank-leg-lift",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -499,19 +1309,55 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Core",
     "description": "An isometric exercise routine thats build muscle, strength, balance, and range of motion in targeted areas through static muscle contraction.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "hand-plank",
-      "elbow-plank",
-      "elbow-pike",
-      "elbow-side-plank",
-      "reverse-plank",
-      "reverse-plank-leg-lift",
-      "bridge",
-      "leg-lift",
-      "toe-touch-hold",
-      "bicycle-crunch-hold",
-      "lying-side-leg-raise",
-      "superman"
+    "steps": [
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-pike",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bicycle-crunch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-side-leg-raise",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "superman",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -519,15 +1365,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Abs",
     "description": "An isometric exercise routine thats build muscle, strength, balance, and range of motion in targeted areas through static muscle contraction.",
     "totalMinutes": 4,
-    "exerciseIds": [
-      "crunch-hold",
-      "bicycle-crunch-hold",
-      "toe-touch-hold",
-      "leg-lift",
-      "lying-side-leg-raise",
-      "v-sit",
-      "dead-bug",
-      "hollow-body"
+    "steps": [
+      {
+        "exerciseId": "crunch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bicycle-crunch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-side-leg-raise",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "v-sit",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dead-bug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hollow-body",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -535,14 +1405,35 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Squats",
     "description": "An isometric exercise routine thats build muscle, strength, balance, and range of motion in targeted areas through static muscle contraction.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "squat-hold",
-      "split-lunge-hold",
-      "narrow-squat-hold",
-      "side-lunge-hold",
-      "sumo-squat-hold",
-      "curtsy-lunge-hold",
-      "wall-sit"
+    "steps": [
+      {
+        "exerciseId": "squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "split-lunge-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "narrow-squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "sumo-squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "curtsy-lunge-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wall-sit",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -550,15 +1441,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Arms",
     "description": "An isometric exercise routine thats build muscle, strength, balance, and range of motion in targeted areas through static muscle contraction.",
     "totalMinutes": 4,
-    "exerciseIds": [
-      "hand-plank",
-      "push-up-hold",
-      "reverse-plank",
-      "single-arm-plank",
-      "pike",
-      "bent-arm-pike",
-      "dip-hold",
-      "narrow-push-up-hold"
+    "steps": [
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "push-up-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-arm-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pike",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bent-arm-pike",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dip-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "narrow-push-up-hold",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -566,11 +1481,23 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Back",
     "description": "An isometric exercise routine thats build muscle, strength, balance, and range of motion in targeted areas through static muscle contraction.",
     "totalMinutes": 3,
-    "exerciseIds": [
-      "bird-dog",
-      "superman",
-      "aquaman",
-      "airplane"
+    "steps": [
+      {
+        "exerciseId": "bird-dog",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "superman",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "aquaman",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "airplane",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -578,29 +1505,95 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Full Body",
     "description": "An isometric exercise routine thats build muscle, strength, balance, and range of motion in targeted areas through static muscle contraction.",
     "totalMinutes": 12,
-    "exerciseIds": [
-      "crunch-hold",
-      "toe-touch-hold",
-      "hollow-body",
-      "bicycle-crunch-hold",
-      "bridge",
-      "bridge-leg-lift",
-      "elbow-side-plank",
-      "lying-side-leg-raise",
-      "hand-plank",
-      "bulldog",
-      "push-up-hold",
-      "superman",
-      "airplane",
-      "hand-side-plank",
-      "pike",
-      "bent-arm-pike",
-      "dip-hold",
-      "squat-hold",
-      "narrow-squat-hold",
-      "sumo-squat-hold",
-      "split-lunge-hold",
-      "side-lunge-hold"
+    "steps": [
+      {
+        "exerciseId": "crunch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hollow-body",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bicycle-crunch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-side-leg-raise",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bulldog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "push-up-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "superman",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "airplane",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pike",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bent-arm-pike",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dip-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "narrow-squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "sumo-squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "split-lunge-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "side-lunge-hold",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -608,48 +1601,171 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Expert",
     "description": "An isometric exercise routine thats build muscle, strength, balance, and range of motion in targeted areas through static muscle contraction.",
     "totalMinutes": 24,
-    "exerciseIds": [
-      "squat-hold",
-      "narrow-squat-hold",
-      "sumo-squat-hold",
-      "split-lunge-hold",
-      "side-lunge-hold",
-      "curtsy-lunge-hold",
-      "pistol-squat-hold",
-      "hand-plank",
-      "hand-plank-leg-lift",
-      "hand-side-plank",
-      "hand-side-plank-leg-lift",
-      "elbow-plank",
-      "elbow-plank-leg-lift",
-      "elbow-side-plank",
-      "elbow-side-plank-leg-lift",
-      "single-arm-plank",
-      "bulldog",
-      "bird-dog",
-      "bird-dog-plank",
-      "push-up-hold",
-      "narrow-push-up-hold",
-      "spiderman-push-up-hold",
-      "bridge",
-      "bridge-leg-lift",
-      "reverse-plank",
-      "reverse-plank-leg-lift",
-      "crunch-hold",
-      "bicycle-crunch-hold",
-      "toe-touch-hold",
-      "v-sit",
-      "leg-lift",
-      "hollow-body",
-      "dead-bug",
-      "superman",
-      "aquaman",
-      "airplane",
-      "pike",
-      "bent-arm-pike",
-      "wall-plank",
-      "wall-pike",
-      "wall-handstand"
+    "steps": [
+      {
+        "exerciseId": "squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "narrow-squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "sumo-squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "split-lunge-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "side-lunge-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "curtsy-lunge-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pistol-squat-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-side-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-arm-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bulldog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bird-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bird-dog-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "push-up-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "narrow-push-up-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "spiderman-push-up-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-plank-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "crunch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bicycle-crunch-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "toe-touch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "v-sit",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hollow-body",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "dead-bug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "superman",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "aquaman",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "airplane",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pike",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bent-arm-pike",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-pike",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-handstand",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -657,17 +1773,47 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Tech Neck",
     "description": "Fix rounded shoulders, forward head posture, and a curved upper spine with stretches that lengthen muscles in your chest, shoulders, and neck.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "chin-retractions",
-      "wall-pecs",
-      "upward-salute",
-      "chin-retractions",
-      "wall-dog",
-      "doorway-pecs",
-      "standing-one-arm-hug",
-      "reverse-shoulder",
-      "neck-laterals",
-      "chin-retractions"
+    "steps": [
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "wall-pecs",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "wall-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "doorway-pecs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-laterals",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 15
+      }
     ]
   },
   {
@@ -675,18 +1821,51 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Pelvic Tilt",
     "description": "Undo anterior pelvic tilt and an arched lower back with stretches that lengthen muscles in your lower back and hip flexors.",
     "totalMinutes": 7,
-    "exerciseIds": [
-      "pelvic-tilt-press",
-      "bridge",
-      "knees-to-chest",
-      "single-knee-to-chest",
-      "lying-quad-stretch",
-      "lunge",
-      "cat-cow",
-      "butterfly",
-      "lying-figure-four",
-      "pelvic-tilt-press",
-      "bridge"
+    "steps": [
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 15
+      }
     ]
   },
   {
@@ -694,17 +1873,47 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Posture Stabilizer",
     "description": "A series of planks and isometric exercises that improve posture by strengthening muscles in the core and back, supporting proper alignment of the spine, and improving balance and stability.",
     "totalMinutes": 4,
-    "exerciseIds": [
-      "crunch-hold",
-      "bridge",
-      "dead-bug",
-      "bridge-leg-lift",
-      "bicycle-crunch-hold",
-      "bird-dog",
-      "airplane",
-      "lying-side-leg-raise",
-      "elbow-side-plank",
-      "hand-plank"
+    "steps": [
+      {
+        "exerciseId": "crunch-hold",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "dead-bug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge-leg-lift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bicycle-crunch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bird-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "airplane",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "lying-side-leg-raise",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "elbow-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 15
+      }
     ]
   },
   {
@@ -712,11 +1921,23 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Posture Power",
     "description": "A series of squats and lunge holds designed to strengthen the muscles in your legs, core, and back that are responsible for maintaining good posture.",
     "totalMinutes": 3,
-    "exerciseIds": [
-      "squat-hold",
-      "split-lunge-hold",
-      "side-lunge-hold",
-      "wall-sit"
+    "steps": [
+      {
+        "exerciseId": "squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "split-lunge-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "side-lunge-hold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wall-sit",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -724,13 +1945,31 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hips 1",
     "description": "A series of stretches designed to increase flexibility in the hips, including your hip flexors & extensors, abductors & adductors, and hip rotators.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "lunge",
-      "reverse-lunge",
-      "butterfly",
-      "lying-figure-four",
-      "quad-stretch",
-      "spinal-twist"
+    "steps": [
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -738,18 +1977,51 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hips 2",
     "description": "A series of stretches designed to increase flexibility in the hips, including your hip flexors & extensors, abductors & adductors, and hip rotators.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "lunge",
-      "reverse-lunge",
-      "side-lunge",
-      "lizard-pose",
-      "pigeon",
-      "hurdler",
-      "quad-stretch",
-      "lying-figure-four",
-      "spinal-twist",
-      "reclined-butterfly",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -757,26 +2029,83 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hips 3",
     "description": "A series of stretches designed to increase flexibility in the hips, including your hip flexors & extensors, abductors & adductors, and hip rotators.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "standing-frog",
-      "wide-leg-bend",
-      "lunge",
-      "reverse-lunge",
-      "side-lunge",
-      "lizard-pose",
-      "frog-pose",
-      "pigeon",
-      "leaning-90-90",
-      "90-90",
-      "butterfly",
-      "hurdler",
-      "quad-stretch",
-      "lying-figure-four",
-      "spinal-twist",
-      "reclined-butterfly",
-      "reverse-butterfly",
-      "happy-baby",
-      "knees-to-chest"
+    "steps": [
+      {
+        "exerciseId": "standing-frog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "frog-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "leaning-90-90",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "90-90",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -784,15 +2113,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Back 1",
     "description": "A series of stretches designed to increase flexibility in the lower back.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "cat-cow",
-      "downward-dog",
-      "lunge",
-      "reverse-lunge",
-      "butterfly",
-      "knees-to-chest",
-      "spinal-twist",
-      "lying-figure-four"
+    "steps": [
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 45
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 45
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 45
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 45
+      }
     ]
   },
   {
@@ -800,21 +2153,63 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Back 2",
     "description": "A series of stretches designed to increase flexibility in the lower back.",
     "totalMinutes": 11,
-    "exerciseIds": [
-      "cat-cow",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "lunge",
-      "reverse-lunge",
-      "butterfly",
-      "seated-twist",
-      "seated-fold",
-      "quad-stretch",
-      "lying-figure-four",
-      "spinal-twist",
-      "single-knee-to-chest",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -822,28 +2217,91 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Back 3",
     "description": "A series of stretches designed to increase flexibility in the lower back.",
     "totalMinutes": 16,
-    "exerciseIds": [
-      "upward-salute",
-      "toe-touch",
-      "kneeling-psoas",
-      "wide-leg-bend",
-      "lunge",
-      "reverse-lunge",
-      "kneeling-quad",
-      "cat-cow",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "pigeon",
-      "folded-butterfly",
-      "seated-twist",
-      "seated-fold",
-      "quad-stretch",
-      "lying-figure-four",
-      "spinal-twist",
-      "pelvic-tilt-press",
-      "single-knee-to-chest",
-      "plow"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "kneeling-psoas",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "folded-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -851,18 +2309,51 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Back Hybrid 1",
     "description": "A series of stretches and isometric exercises designed to increase flexibility and strength in the lower back.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "cat-cow",
-      "lunge",
-      "reverse-lunge",
-      "downward-dog",
-      "bird-dog",
-      "hand-plank",
-      "elbow-plank",
-      "spinal-twist",
-      "lying-figure-four",
-      "pelvic-tilt-press",
-      "bridge"
+    "steps": [
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 45
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 45
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bird-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 45
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 45
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 15
+      }
     ]
   },
   {
@@ -870,27 +2361,87 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Back Hybrid 2",
     "description": "A series of stretches and isometric exercises designed to increase flexibility and strength in the lower back.",
     "totalMinutes": 11,
-    "exerciseIds": [
-      "upward-salute",
-      "toe-touch",
-      "lunge",
-      "reverse-lunge",
-      "cat-cow",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "standing-lunge-twist",
-      "bird-dog",
-      "cat-cow",
-      "hand-plank",
-      "elbow-plank",
-      "spinal-twist",
-      "lying-figure-four",
-      "pelvic-tilt-press",
-      "bridge",
-      "pelvic-tilt-press",
-      "bridge",
-      "knees-to-chest"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-lunge-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bird-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hand-plank",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -898,18 +2449,51 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Neck 1",
     "description": "A series of stretches designed to increase flexibility in the neck.",
     "totalMinutes": 4,
-    "exerciseIds": [
-      "standing-shoulder-rolls",
-      "neck-roll",
-      "chin-retractions",
-      "standing-diver",
-      "standing-cactus-arms",
-      "neck-extension",
-      "neck-flexion",
-      "ear-to-shoulder",
-      "scalene-stretch",
-      "scapula-stretch",
-      "neck-rotation"
+    "steps": [
+      {
+        "exerciseId": "standing-shoulder-rolls",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "standing-diver",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "standing-cactus-arms",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "neck-extension",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-flexion",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ear-to-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scalene-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scapula-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-rotation",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -917,21 +2501,63 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Neck 2",
     "description": "A series of stretches designed to increase flexibility in the neck.",
     "totalMinutes": 8,
-    "exerciseIds": [
-      "standing-shoulder-rolls",
-      "neck-roll",
-      "chin-retractions",
-      "standing-diver",
-      "standing-cactus-arms",
-      "neck-extension",
-      "neck-flexion",
-      "ear-to-shoulder",
-      "scalene-stretch",
-      "scapula-stretch",
-      "neck-rotation",
-      "wall-arms",
-      "reverse-shoulder",
-      "bear-hug"
+    "steps": [
+      {
+        "exerciseId": "standing-shoulder-rolls",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-diver",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-cactus-arms",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-extension",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-flexion",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ear-to-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scalene-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scapula-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-rotation",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bear-hug",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -939,25 +2565,79 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Neck 3",
     "description": "A series of stretches designed to increase flexibility in the neck.",
     "totalMinutes": 12,
-    "exerciseIds": [
-      "standing-shoulder-rolls",
-      "neck-roll",
-      "upward-salute",
-      "chin-retractions",
-      "standing-diver",
-      "standing-cactus-arms",
-      "neck-extension",
-      "neck-flexion",
-      "ear-to-shoulder",
-      "scalene-stretch",
-      "scapula-stretch",
-      "neck-rotation",
-      "wall-arms",
-      "standing-one-arm-hug",
-      "doorway-pecs",
-      "standing-overhead-tricep",
-      "reverse-shoulder",
-      "bear-hug"
+    "steps": [
+      {
+        "exerciseId": "standing-shoulder-rolls",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-diver",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-cactus-arms",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-extension",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-flexion",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ear-to-shoulder",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "scalene-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "scapula-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "neck-rotation",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "doorway-pecs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bear-hug",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -965,12 +2645,27 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Quads 1",
     "description": "A series of stretches designed to increase flexibility in the quadriceps.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "standing-quad",
-      "lunge",
-      "kneeling-quad",
-      "lizard-pose",
-      "quad-stretch"
+    "steps": [
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -978,19 +2673,55 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Quads 2",
     "description": "A series of stretches designed to increase flexibility in the quadriceps.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "standing-quad",
-      "lunge",
-      "kneeling-quad",
-      "reverse-lunge",
-      "lizard-pose",
-      "upward-dog",
-      "downward-dog",
-      "thunderbolt",
-      "quad-stretch",
-      "hurdler",
-      "lying-quad-stretch",
-      "knees-to-chest"
+    "steps": [
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "thunderbolt",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -998,25 +2729,79 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Quads 3",
     "description": "A series of stretches designed to increase flexibility in the quadriceps.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "upward-salute",
-      "standing-quad",
-      "lunge",
-      "kneeling-psoas",
-      "kneeling-quad",
-      "reverse-lunge",
-      "lizard-pose",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "pigeon",
-      "thunderbolt",
-      "saddle-pose",
-      "quad-stretch",
-      "hurdler",
-      "lying-quad-stretch",
-      "single-knee-to-chest",
-      "knees-to-chest"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-psoas",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "thunderbolt",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "saddle-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1024,14 +2809,35 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hamstrings 1",
     "description": "A series of stretches designed to increase flexibility in the hamstrings.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "toe-touch",
-      "cross-leg-fold",
-      "wide-leg-bend",
-      "side-lunge",
-      "reverse-lunge",
-      "seated-fold",
-      "hurdler"
+    "steps": [
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cross-leg-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1039,20 +2845,59 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hamstrings 2",
     "description": "A series of stretches designed to increase flexibility in the hamstrings.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "toe-touch",
-      "cross-leg-fold",
-      "wide-leg-bend",
-      "side-lunge",
-      "reverse-lunge",
-      "downward-dog",
-      "pigeon",
-      "seated-fold",
-      "hurdler",
-      "seated-straddle",
-      "lying-figure-four",
-      "lying-hamstring",
-      "plow"
+    "steps": [
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cross-leg-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-straddle",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-hamstring",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1060,27 +2905,87 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hamstrings 3",
     "description": "A series of stretches designed to increase flexibility in the hamstrings.",
     "totalMinutes": 16,
-    "exerciseIds": [
-      "rag-doll",
-      "toe-touch",
-      "cross-leg-fold",
-      "standing-quad",
-      "wide-leg-bend",
-      "squat-stretch",
-      "side-lunge",
-      "reverse-lunge",
-      "kneeling-quad",
-      "upward-dog",
-      "downward-dog",
-      "lizard-pose",
-      "pigeon",
-      "seated-fold",
-      "hurdler",
-      "quad-stretch",
-      "seated-straddle",
-      "lying-figure-four",
-      "lying-hamstring",
-      "plow"
+    "steps": [
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cross-leg-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "squat-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-straddle",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-hamstring",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1088,32 +2993,107 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hips 4",
     "description": "A series of stretches designed to increase flexibility in the hips, including your hip flexors & extensors, abductors & adductors, and hip rotators.",
     "totalMinutes": 20,
-    "exerciseIds": [
-      "standing-frog",
-      "wide-leg-bend",
-      "squat-stretch",
-      "lunge",
-      "reverse-lunge",
-      "side-lunge",
-      "lizard-pose",
-      "frog-pose",
-      "pigeon",
-      "leaning-90-90",
-      "90-90",
-      "butterfly",
-      "leaning-figure-four",
-      "hurdler",
-      "folded-butterfly",
-      "double-pigeon",
-      "single-knee-to-chest",
-      "quad-stretch",
-      "seated-straddle",
-      "lying-figure-four",
-      "spinal-twist",
-      "reclined-butterfly",
-      "reverse-butterfly",
-      "happy-baby",
-      "knees-to-chest"
+    "steps": [
+      {
+        "exerciseId": "standing-frog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "squat-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "frog-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "leaning-90-90",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "90-90",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "leaning-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "folded-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "double-pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-straddle",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1121,17 +3101,47 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Shoulders 1",
     "description": "A series of stretches designed to increase flexibility in the shoulders.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "standing-chest-opener",
-      "standing-one-arm-hug",
-      "reverse-shoulder",
-      "standing-overhead-tricep",
-      "wall-arms",
-      "forward-fold",
-      "wall-pecs",
-      "standing-diver",
-      "wall-dog",
-      "doorway-pecs"
+    "steps": [
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-pecs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-diver",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "doorway-pecs",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1139,24 +3149,75 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Shoulders 2",
     "description": "A series of stretches designed to increase flexibility in the shoulders.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "standing-chest-opener",
-      "standing-one-arm-hug",
-      "reverse-shoulder",
-      "standing-overhead-tricep",
-      "wall-arms",
-      "forward-fold",
-      "eagle-arm",
-      "wall-pecs",
-      "standing-diver",
-      "wall-dog",
-      "doorway-pecs",
-      "standing-shoulder-rolls",
-      "neck-roll",
-      "ear-to-shoulder",
-      "standing-cactus-arms",
-      "bear-hug",
-      "cow-face"
+    "steps": [
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "eagle-arm",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-pecs",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-diver",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "doorway-pecs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-shoulder-rolls",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ear-to-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-cactus-arms",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bear-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cow-face",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1164,32 +3225,107 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Shoulders 3",
     "description": "A series of stretches designed to increase flexibility in the shoulders.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "upward-salute",
-      "rag-doll",
-      "standing-chest-opener",
-      "standing-one-arm-hug",
-      "reverse-shoulder",
-      "standing-overhead-tricep",
-      "wall-arms",
-      "forward-fold",
-      "eagle-arm",
-      "wall-pecs",
-      "standing-diver",
-      "wall-dog",
-      "doorway-pecs",
-      "standing-shoulder-rolls",
-      "neck-roll",
-      "ear-to-shoulder",
-      "standing-cactus-arms",
-      "bear-hug",
-      "cow-face",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "shoulder-cross",
-      "shoulder-opener",
-      "seated-chest"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "eagle-arm",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-pecs",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-diver",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "doorway-pecs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-shoulder-rolls",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ear-to-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-cactus-arms",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bear-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cow-face",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "shoulder-cross",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "shoulder-opener",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-chest",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1197,15 +3333,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Chest 1",
     "description": "A series of stretches designed to increase flexibility in the chest.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "arm-swings",
-      "standing-chest-opener",
-      "standing-overhead-tricep",
-      "standing-one-arm-hug",
-      "wall-arms",
-      "wall-pecs",
-      "doorway-pecs",
-      "reverse-shoulder"
+    "steps": [
+      {
+        "exerciseId": "arm-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wall-pecs",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "doorway-pecs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1213,23 +3373,71 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Chest 2",
     "description": "A series of stretches designed to increase flexibility in the chest.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "arm-circles",
-      "arm-swings",
-      "standing-chest-opener",
-      "upward-salute",
-      "standing-overhead-tricep",
-      "standing-one-arm-hug",
-      "wall-arms",
-      "forward-fold",
-      "wall-pecs",
-      "doorway-pecs",
-      "reverse-shoulder",
-      "wall-dog",
-      "cat-cow",
-      "thread-the-needle",
-      "upward-dog",
-      "childs-pose"
+    "steps": [
+      {
+        "exerciseId": "arm-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-pecs",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "doorway-pecs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "thread-the-needle",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1237,31 +3445,103 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Chest 3",
     "description": "A series of stretches designed to increase flexibility in the chest.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "arm-circles",
-      "arm-swings",
-      "standing-chest-opener",
-      "upward-salute",
-      "standing-overhead-tricep",
-      "standing-one-arm-hug",
-      "wall-arms",
-      "forward-fold",
-      "standing-cactus-arms",
-      "wall-pecs",
-      "doorway-pecs",
-      "reverse-shoulder",
-      "wall-dog",
-      "cat-cow",
-      "thread-the-needle",
-      "upward-dog",
-      "puppy-pose",
-      "camel-pose",
-      "seated-chest",
-      "spinal-twist",
-      "shoulder-opener",
-      "half-bow",
-      "bow-pose",
-      "childs-pose"
+    "steps": [
+      {
+        "exerciseId": "arm-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-cactus-arms",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "wall-pecs",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "doorway-pecs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "thread-the-needle",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "puppy-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "camel-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "shoulder-opener",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "half-bow",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "bow-pose",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1269,17 +3549,47 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Upper Body 1",
     "description": "A beginner routine designed to increase flexibility in your neck, shoulders, chest, and upper back.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "standing-chest-opener",
-      "standing-overhead-tricep",
-      "standing-one-arm-hug",
-      "reverse-shoulder",
-      "standing-diver",
-      "wall-arms",
-      "neck-roll",
-      "chin-retractions",
-      "ear-to-shoulder",
-      "scalene-stretch"
+    "steps": [
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-diver",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ear-to-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scalene-stretch",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1287,27 +3597,87 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Upper Body 2",
     "description": "An intermediate routine designed to increase flexibility in your neck, shoulders, chest, and upper back.",
     "totalMinutes": 11,
-    "exerciseIds": [
-      "arm-circles",
-      "arm-swings",
-      "upward-salute",
-      "forward-fold",
-      "standing-chest-opener",
-      "standing-overhead-tricep",
-      "standing-one-arm-hug",
-      "standing-cactus-arms",
-      "standing-diver",
-      "standing-side-bend",
-      "reverse-shoulder",
-      "bear-hug",
-      "wall-arms",
-      "wall-dog",
-      "neck-roll",
-      "chin-retractions",
-      "ear-to-shoulder",
-      "neck-rotation",
-      "scapula-stretch",
-      "scalene-stretch"
+    "steps": [
+      {
+        "exerciseId": "arm-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-cactus-arms",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-diver",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-side-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bear-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wall-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ear-to-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-rotation",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scapula-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scalene-stretch",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1315,35 +3685,119 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Upper Body 3",
     "description": "An expert routine designed to increase flexibility in your neck, shoulders, chest, and upper back.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "arm-circles",
-      "arm-swings",
-      "standing-shoulder-rolls",
-      "upward-salute",
-      "rag-doll",
-      "standing-chest-opener",
-      "standing-overhead-tricep",
-      "standing-one-arm-hug",
-      "forward-fold",
-      "standing-cactus-arms",
-      "standing-diver",
-      "standing-side-bend",
-      "reverse-shoulder",
-      "bear-hug",
-      "wall-arms",
-      "eagle-arm",
-      "wall-dog",
-      "reverse-prayer-pose",
-      "doorway-pecs",
-      "cow-face",
-      "neck-roll",
-      "chin-retractions",
-      "neck-extension",
-      "neck-flexion",
-      "ear-to-shoulder",
-      "neck-rotation",
-      "scapula-stretch",
-      "scalene-stretch"
+    "steps": [
+      {
+        "exerciseId": "arm-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-shoulder-rolls",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-chest-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-cactus-arms",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-diver",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-side-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bear-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-arms",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "eagle-arm",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wall-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-prayer-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "doorway-pecs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cow-face",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-extension",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-flexion",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ear-to-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-rotation",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scapula-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scalene-stretch",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1351,13 +3805,31 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Body 1",
     "description": "A beginner routine designed to increase flexibility in your hips, hamstrings, glutes, groin, and thighs.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "wide-leg-bend",
-      "lunge",
-      "reverse-lunge",
-      "butterfly",
-      "quad-stretch",
-      "lying-figure-four"
+    "steps": [
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1365,19 +3837,55 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Body 2",
     "description": "An intermediate routine designed to increase flexibility in your hips, hamstrings, glutes, groin, and thighs.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "wide-leg-bend",
-      "side-lunge",
-      "lunge",
-      "reverse-lunge",
-      "kneeling-quad",
-      "downward-dog",
-      "pigeon",
-      "thunderbolt",
-      "butterfly",
-      "hurdler",
-      "quad-stretch",
-      "lying-figure-four"
+    "steps": [
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "thunderbolt",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1385,25 +3893,79 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Body 3",
     "description": "An expert routine designed to increase flexibility in your hips, hamstrings, glutes, groin, and thighs.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "wide-leg-bend",
-      "side-lunge",
-      "lunge",
-      "reverse-lunge",
-      "kneeling-quad",
-      "downward-dog",
-      "pigeon",
-      "thunderbolt",
-      "toe-squat",
-      "butterfly",
-      "double-pigeon",
-      "modified-seated-twist",
-      "leaning-90-90",
-      "hurdler",
-      "quad-stretch",
-      "lying-figure-four",
-      "spinal-twist",
-      "plow"
+    "steps": [
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "thunderbolt",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-squat",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "double-pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "modified-seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "leaning-90-90",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1411,15 +3973,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Core 1",
     "description": "A beginner routine designed to increase flexibility in your lower back, hips, and core.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "upward-salute",
-      "toe-touch",
-      "upward-dog",
-      "childs-pose",
-      "cat-cow",
-      "single-knee-to-chest",
-      "lying-figure-four",
-      "spinal-twist"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1427,22 +4013,67 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Core 2",
     "description": "An intermediate routine designed to increase flexibility in your lower back, hips, and core.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "upward-salute",
-      "toe-touch",
-      "kneeling-psoas",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "cat-cow",
-      "seated-twist",
-      "butterfly",
-      "single-knee-to-chest",
-      "pelvic-tilt-press",
-      "lying-figure-four",
-      "spinal-twist",
-      "knees-to-chest",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "kneeling-psoas",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1450,29 +4081,95 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Core 3",
     "description": "An expert routine designed to increase flexibility in your lower back, hips, and core.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "upward-salute",
-      "toe-touch",
-      "standing-side-bend",
-      "rag-doll",
-      "kneeling-psoas",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "cat-cow",
-      "thread-the-needle",
-      "camel-pose",
-      "modified-seated-twist",
-      "folded-butterfly",
-      "twisted-sphinx",
-      "bow-pose",
-      "single-knee-to-chest",
-      "pelvic-tilt-press",
-      "lying-figure-four",
-      "spinal-twist",
-      "knees-to-chest",
-      "plow",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-side-bend",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "rag-doll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "kneeling-psoas",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "thread-the-needle",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "camel-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "modified-seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "folded-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "twisted-sphinx",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "bow-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "plow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1480,15 +4177,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Back 4",
     "description": "A beginner routine designed to increase flexibility and reduce pain in your lower back.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "upward-dog",
-      "downward-dog",
-      "bird-dog",
-      "lying-figure-four",
-      "spinal-twist",
-      "pelvic-tilt-press",
-      "bridge",
-      "single-knee-to-chest"
+    "steps": [
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bird-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1496,14 +4217,35 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Back 5",
     "description": "A beginner routine designed to increase flexibility and reduce pain in your lower back.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "wide-leg-bend",
-      "kneeling-psoas",
-      "leaning-figure-four",
-      "hurdler",
-      "quad-stretch",
-      "elbow-side-plank",
-      "figure-four-twist"
+    "steps": [
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "kneeling-psoas",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "leaning-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 45
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 45
+      },
+      {
+        "exerciseId": "elbow-side-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "figure-four-twist",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1511,14 +4253,35 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Lower Back 6",
     "description": "A beginner routine designed to increase flexibility and reduce pain in your lower back.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "lunge",
-      "reverse-lunge",
-      "pigeon",
-      "elbow-plank",
-      "cat-cow",
-      "seated-twist",
-      "knees-to-chest"
+    "steps": [
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1526,18 +4289,51 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Neck 4",
     "description": "A beginner routine designed to increase flexibility and reduce pain in your neck.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "seated-shoulder-rolls",
-      "overhead-reach",
-      "seated-diver",
-      "seated-cactus-arms",
-      "chin-retractions",
-      "neck-extension",
-      "neck-flexion",
-      "ear-to-shoulder",
-      "scapula-stretch",
-      "scalene-stretch",
-      "neck-rotation"
+    "steps": [
+      {
+        "exerciseId": "seated-shoulder-rolls",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "overhead-reach",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-diver",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-cactus-arms",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-extension",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-flexion",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ear-to-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scapula-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scalene-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-rotation",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1545,18 +4341,51 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Neck 5",
     "description": "A beginner routine designed to increase flexibility and reduce pain in your neck.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "neck-roll",
-      "chin-retractions",
-      "neck-flex",
-      "neck-laterals",
-      "scapula-stretch",
-      "scalene-stretch",
-      "neck-rotation",
-      "doorway-pecs",
-      "standing-one-arm-hug",
-      "standing-overhead-tricep",
-      "reverse-shoulder"
+    "steps": [
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "chin-retractions",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-flex",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-laterals",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scapula-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "scalene-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-rotation",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "doorway-pecs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-one-arm-hug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-overhead-tricep",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1564,14 +4393,35 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hips 5",
     "description": "A beginner routine designed to increase flexibility and strength in your hips.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "lunge",
-      "reverse-lunge",
-      "bird-dog",
-      "butterfly",
-      "lying-figure-four",
-      "quad-stretch",
-      "spinal-twist"
+    "steps": [
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "bird-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1579,15 +4429,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hips 6",
     "description": "A beginner routine designed to increase flexibility and strength in your hips.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "lizard-pose",
-      "frog-pose",
-      "pigeon",
-      "lying-side-leg-raise",
-      "leaning-90-90",
-      "bicycle-crunch-hold",
-      "seated-straddle",
-      "knees-to-chest"
+    "steps": [
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "frog-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-side-leg-raise",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "leaning-90-90",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "bicycle-crunch-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-straddle",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1595,16 +4469,43 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Hips 7",
     "description": "A beginner routine designed to increase flexibility and strength in your hips.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "standing-frog",
-      "wide-leg-bend",
-      "side-lunge",
-      "dead-bug",
-      "reclined-butterfly",
-      "reverse-butterfly",
-      "bridge",
-      "single-knee-to-chest",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "standing-frog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "dead-bug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1612,13 +4513,31 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Front Splits 1",
     "description": "A series of static stretches designed to gradually lengthen hip flexors, hamstrings, and inner thighs, focusing on alignment and progressive depth toward a comfortable split.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "lunge",
-      "reverse-lunge",
-      "lizard-pose",
-      "seated-fold",
-      "quad-stretch",
-      "hurdler"
+    "steps": [
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1626,19 +4545,55 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Front Splits 2",
     "description": "A series of static stretches designed to gradually lengthen hip flexors, hamstrings, and inner thighs, focusing on alignment and progressive depth toward a comfortable split.",
     "totalMinutes": 11,
-    "exerciseIds": [
-      "toe-touch",
-      "bent-over-calf",
-      "wide-leg-bend",
-      "lunge",
-      "reverse-lunge",
-      "kneeling-quad",
-      "lizard-pose",
-      "pigeon",
-      "seated-fold",
-      "quad-stretch",
-      "hurdler",
-      "front-split"
+    "steps": [
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bent-over-calf",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "front-split",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1646,23 +4601,71 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Front Splits 3",
     "description": "A series of static stretches designed to gradually lengthen hip flexors, hamstrings, and inner thighs, focusing on alignment and progressive depth toward a comfortable split.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "cross-leg-fold",
-      "standing-quad",
-      "wide-leg-bend",
-      "bent-over-calf",
-      "lunge",
-      "side-lunge",
-      "deep-split-squat",
-      "reverse-lunge",
-      "kneeling-quad",
-      "lizard-pose",
-      "pigeon",
-      "seated-fold",
-      "quad-stretch",
-      "lying-figure-four",
-      "hurdler",
-      "front-split"
+    "steps": [
+      {
+        "exerciseId": "cross-leg-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bent-over-calf",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "deep-split-squat",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "seated-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "front-split",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1670,11 +4673,23 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Front Splits Warm Up",
     "description": "Activate and prepare your legs, hips, and lower back with gentle dynamic moves, promoting circulation and flexibility before deeper front split work.",
     "totalMinutes": 2,
-    "exerciseIds": [
-      "leg-swings",
-      "dynamic-wide-leg-forward-fold",
-      "gate-opener",
-      "hamstring-scoops"
+    "steps": [
+      {
+        "exerciseId": "leg-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dynamic-wide-leg-forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "gate-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hamstring-scoops",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1682,19 +4697,55 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Front Splits Mobility",
     "description": "Focus on dynamic stretches and mobility exercises to enhance joint resilience and muscular balance for a more fluid front split practice.",
     "totalMinutes": 6,
-    "exerciseIds": [
-      "leg-swings",
-      "knees-hugs",
-      "lateral-leg-swing",
-      "gate-opener",
-      "zombie-walks",
-      "hamstring-scoops",
-      "dynamic-quad-stretch",
-      "dynamic-wide-leg-forward-fold",
-      "wide-leg-toe-touches",
-      "kneeling-hip-circles",
-      "90-90-hip-switch",
-      "90-90-hip-switch-no-hands"
+    "steps": [
+      {
+        "exerciseId": "leg-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-hugs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lateral-leg-swing",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "gate-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "zombie-walks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hamstring-scoops",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dynamic-quad-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dynamic-wide-leg-forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-toe-touches",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "kneeling-hip-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "90-90-hip-switch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "90-90-hip-switch-no-hands",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1702,17 +4753,47 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Front Splits Strength",
     "description": "Utilize isometric and calisthenic exercises to build supportive strength, ensuring safer and more controlled transitions into front splits.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "squat-hold",
-      "split-lunge-hold",
-      "side-lunge-hold",
-      "single-leg-deadlift",
-      "air-squats",
-      "split-squats",
-      "runners-lunge-twist",
-      "bridge",
-      "90-90-hip-switch-extension",
-      "single-leg-glute-bridges"
+    "steps": [
+      {
+        "exerciseId": "squat-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "split-lunge-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge-hold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-leg-deadlift",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "air-squats",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "split-squats",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "runners-lunge-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "90-90-hip-switch-extension",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-leg-glute-bridges",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1720,15 +4801,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Wake & Shake 1",
     "description": "An energizing routine that uses dynamic stretches and mobility exercises to prime your body for an active, productive day ahead.",
     "totalMinutes": 4,
-    "exerciseIds": [
-      "dynamic-side-bends",
-      "arm-circles",
-      "arm-swings",
-      "good-mornings",
-      "trunk-twist",
-      "neck-roll",
-      "hip-circles",
-      "dynamic-wide-leg-forward-fold"
+    "steps": [
+      {
+        "exerciseId": "dynamic-side-bends",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "good-mornings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "trunk-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hip-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dynamic-wide-leg-forward-fold",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1736,20 +4841,59 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Wake & Shake 2",
     "description": "An energizing routine that uses dynamic stretches and mobility exercises to prime your body for an active, productive day ahead.",
     "totalMinutes": 7,
-    "exerciseIds": [
-      "dynamic-side-bends",
-      "arm-circles",
-      "arm-swings",
-      "good-mornings",
-      "trunk-twist",
-      "neck-roll",
-      "hip-circles",
-      "hamstring-scoops",
-      "gate-opener",
-      "dynamic-wide-leg-forward-fold",
-      "wide-leg-torso-circles",
-      "knees-hugs",
-      "knee-circles"
+    "steps": [
+      {
+        "exerciseId": "dynamic-side-bends",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "good-mornings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "trunk-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hip-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hamstring-scoops",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "gate-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dynamic-wide-leg-forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-torso-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-hugs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knee-circles",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1757,27 +4901,87 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Wake & Shake 3",
     "description": "An energizing routine that uses dynamic stretches and mobility exercises to prime your body for an active, productive day ahead.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "dynamic-side-bends",
-      "arm-circles",
-      "arm-swings",
-      "good-mornings",
-      "trunk-twist",
-      "standing-shoulder-rolls",
-      "neck-roll",
-      "hip-circles",
-      "hamstring-scoops",
-      "gate-opener",
-      "leg-swings",
-      "lateral-leg-swing",
-      "dynamic-wide-leg-forward-fold",
-      "wide-leg-torso-circles",
-      "toe-touch-twist",
-      "standing-hip-openers",
-      "high-knee-twists",
-      "knee-circles",
-      "ankle-circles",
-      "wrist-circles"
+    "steps": [
+      {
+        "exerciseId": "dynamic-side-bends",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "arm-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "good-mornings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "trunk-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-shoulder-rolls",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "neck-roll",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hip-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hamstring-scoops",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "gate-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "leg-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lateral-leg-swing",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dynamic-wide-leg-forward-fold",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-torso-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-hip-openers",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "high-knee-twists",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knee-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ankle-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wrist-circles",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1785,14 +4989,35 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Feet & Ankles 1",
     "description": "A targeted series of dynamic exercises and stretches that improve foot and ankle range of motion, enhance flexibility, and support smooth, stable movement.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "single-leg-stand",
-      "ankle-circles",
-      "heel-to-toe-rocks",
-      "lateral-foot-rocks",
-      "knee-circles",
-      "soleus-stretch",
-      "standing-quad"
+    "steps": [
+      {
+        "exerciseId": "single-leg-stand",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ankle-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "heel-to-toe-rocks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lateral-foot-rocks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knee-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "soleus-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1800,21 +5025,63 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Feet & Ankles 2",
     "description": "A targeted series of dynamic exercises and stretches that improve foot and ankle range of motion, enhance flexibility, and support smooth, stable movement.",
     "totalMinutes": 11,
-    "exerciseIds": [
-      "single-leg-stand",
-      "ankle-circles",
-      "heel-to-toe-rocks",
-      "lateral-foot-rocks",
-      "knee-circles",
-      "soleus-stretch",
-      "leaning-calf",
-      "toe-to-wall",
-      "standing-quad",
-      "single-leg-calf-stretch",
-      "single-leg-shin-stretch",
-      "toe-stretch",
-      "thunderbolt",
-      "toe-squat"
+    "steps": [
+      {
+        "exerciseId": "single-leg-stand",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ankle-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "heel-to-toe-rocks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lateral-foot-rocks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knee-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "soleus-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "leaning-calf",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "toe-to-wall",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "single-leg-calf-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "single-leg-shin-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "toe-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "thunderbolt",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-squat",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1822,27 +5089,87 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Feet & Ankles 3",
     "description": "A targeted series of dynamic exercises and stretches that improve foot and ankle range of motion, enhance flexibility, and support smooth, stable movement.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "single-leg-stand",
-      "ankle-circles",
-      "heel-to-toe-rocks",
-      "lateral-foot-rocks",
-      "knee-circles",
-      "bent-over-calf",
-      "soleus-stretch",
-      "calf-raises",
-      "leaning-calf",
-      "toe-to-wall",
-      "toe-raises",
-      "standing-quad",
-      "squat-stretch",
-      "single-leg-calf-stretch",
-      "knee-to-wall",
-      "single-leg-shin-stretch",
-      "toe-stretch",
-      "thunderbolt",
-      "toe-squat",
-      "lying-ankle-circles"
+    "steps": [
+      {
+        "exerciseId": "single-leg-stand",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "ankle-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "heel-to-toe-rocks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lateral-foot-rocks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knee-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bent-over-calf",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "soleus-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "calf-raises",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "leaning-calf",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "toe-to-wall",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "toe-raises",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "squat-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-leg-calf-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knee-to-wall",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "single-leg-shin-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "toe-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "thunderbolt",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-squat",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-ankle-circles",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1850,12 +5177,27 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Post-Run 1",
     "description": "Improve your stride, speed, and recovery with post-run stretches designed to reduce soreness, prevent injury, and increase your range of motion.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "standing-quad",
-      "cross-leg-fold",
-      "lunge",
-      "lying-figure-four",
-      "hurdler"
+    "steps": [
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "cross-leg-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1863,18 +5205,51 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Post-Run 3",
     "description": "Improve your stride, speed, and recovery with post-run stretches designed to reduce soreness, prevent injury, and increase your range of motion.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "bent-over-calf",
-      "standing-quad",
-      "leaning-calf",
-      "wide-leg-side-bend",
-      "cross-leg-fold",
-      "lunge",
-      "downward-dog",
-      "pigeon",
-      "hurdler",
-      "butterfly",
-      "modified-seated-twist"
+    "steps": [
+      {
+        "exerciseId": "bent-over-calf",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-quad",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "leaning-calf",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "wide-leg-side-bend",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "cross-leg-fold",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "modified-seated-twist",
+        "durationSeconds": 60
+      }
     ]
   },
   {
@@ -1882,15 +5257,39 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Pre-Run 1",
     "description": "An energizing warm-up sequence of dynamic stretches and mobility drills that loosen up muscles, reduce injury risk, and prime your body for a smooth, strong run.",
     "totalMinutes": 4,
-    "exerciseIds": [
-      "leg-swings",
-      "gate-opener",
-      "heel-to-toe-rocks",
-      "knee-circles",
-      "lateral-lunge",
-      "toe-touch-twist",
-      "high-knee-twists",
-      "hamstring-scoops"
+    "steps": [
+      {
+        "exerciseId": "leg-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "gate-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "heel-to-toe-rocks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knee-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lateral-lunge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "high-knee-twists",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hamstring-scoops",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1898,23 +5297,71 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Pre-Run 2",
     "description": "An energizing warm-up sequence of dynamic stretches and mobility drills that loosen up muscles, reduce injury risk, and prime your body for a smooth, strong run.",
     "totalMinutes": 8,
-    "exerciseIds": [
-      "leg-swings",
-      "lateral-leg-swing",
-      "gate-opener",
-      "heel-to-toe-rocks",
-      "lateral-foot-rocks",
-      "knee-circles",
-      "dynamic-side-bends",
-      "split-squats",
-      "lateral-lunge",
-      "runners-lunge-twist",
-      "toe-touch-twist",
-      "high-knee-twists",
-      "dynamic-quad-stretch",
-      "hamstring-scoops",
-      "high-knees",
-      "butt-kicks"
+    "steps": [
+      {
+        "exerciseId": "leg-swings",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lateral-leg-swing",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "gate-opener",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "heel-to-toe-rocks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lateral-foot-rocks",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knee-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dynamic-side-bends",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "split-squats",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lateral-lunge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "runners-lunge-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch-twist",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "high-knee-twists",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "dynamic-quad-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hamstring-scoops",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "high-knees",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "butt-kicks",
+        "durationSeconds": 15
+      }
     ]
   },
   {
@@ -1922,16 +5369,43 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Pelvic Floor 1",
     "description": "A series of stretches and isometric exercises designed to increase flexibility in the pelvic floor, hips, and core.",
     "totalMinutes": 5,
-    "exerciseIds": [
-      "cat-cow",
-      "upward-dog",
-      "childs-pose",
-      "butterfly",
-      "knees-to-chest",
-      "pelvic-tilt-press",
-      "lying-figure-four",
-      "reclined-butterfly",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1939,23 +5413,71 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Pelvic Floor 2",
     "description": "A series of stretches and isometric exercises designed to increase flexibility in the pelvic floor, hips, and core.",
     "totalMinutes": 10,
-    "exerciseIds": [
-      "upward-salute",
-      "wide-leg-bend",
-      "lunge",
-      "reverse-lunge",
-      "cat-cow",
-      "upward-dog",
-      "childs-pose",
-      "frog-pose",
-      "butterfly",
-      "knees-to-chest",
-      "bridge",
-      "pelvic-tilt-press",
-      "lying-figure-four",
-      "reclined-butterfly",
-      "spinal-twist",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "frog-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1963,31 +5485,103 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Pelvic Floor 3",
     "description": "A series of stretches and isometric exercises designed to increase flexibility in the pelvic floor, hips, and core.",
     "totalMinutes": 15,
-    "exerciseIds": [
-      "hip-circles",
-      "upward-salute",
-      "toe-touch",
-      "reverse-shoulder",
-      "wide-leg-bend",
-      "side-lunge",
-      "lunge",
-      "reverse-lunge",
-      "squat-stretch",
-      "cat-cow",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "bird-dog",
-      "frog-pose",
-      "lizard-pose",
-      "butterfly",
-      "knees-to-chest",
-      "bridge",
-      "pelvic-tilt-press",
-      "lying-figure-four",
-      "reclined-butterfly",
-      "spinal-twist",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "hip-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "squat-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bird-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "frog-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -1995,37 +5589,127 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Pelvic Floor 4",
     "description": "A series of stretches and isometric exercises designed to increase flexibility in the pelvic floor, hips, and core.",
     "totalMinutes": 20,
-    "exerciseIds": [
-      "hip-circles",
-      "upward-salute",
-      "toe-touch",
-      "reverse-shoulder",
-      "wide-leg-bend",
-      "side-lunge",
-      "lunge",
-      "reverse-lunge",
-      "squat-stretch",
-      "cat-cow",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "upward-frog",
-      "bird-dog",
-      "frog-pose",
-      "lizard-pose",
-      "elbow-plank",
-      "pigeon",
-      "butterfly",
-      "seated-twist",
-      "knees-to-chest",
-      "bridge",
-      "single-knee-to-chest",
-      "pelvic-tilt-press",
-      "lying-figure-four",
-      "dead-bug",
-      "reclined-butterfly",
-      "spinal-twist",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "hip-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "squat-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-frog",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "bird-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "frog-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "dead-bug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      }
     ]
   },
   {
@@ -2033,45 +5717,159 @@ export const bendRoutines: BendRoutine[] = [
     "name": "Pelvic Floor 5",
     "description": "A series of stretches and isometric exercises designed to increase flexibility in the pelvic floor, hips, and core.",
     "totalMinutes": 25,
-    "exerciseIds": [
-      "hip-circles",
-      "knees-hugs",
-      "upward-salute",
-      "toe-touch",
-      "reverse-shoulder",
-      "wide-leg-bend",
-      "side-lunge",
-      "standing-frog",
-      "lunge",
-      "reverse-lunge",
-      "kneeling-psoas",
-      "squat-stretch",
-      "cat-cow",
-      "upward-dog",
-      "childs-pose",
-      "downward-dog",
-      "upward-frog",
-      "puppy-pose",
-      "bird-dog",
-      "frog-pose",
-      "lizard-pose",
-      "elbow-plank",
-      "pigeon",
-      "superman",
-      "butterfly",
-      "seated-twist",
-      "knees-to-chest",
-      "bridge",
-      "single-knee-to-chest",
-      "pelvic-tilt-press",
-      "lying-figure-four",
-      "dead-bug",
-      "reclined-butterfly",
-      "spinal-twist",
-      "quad-stretch",
-      "folded-butterfly",
-      "hurdler",
-      "happy-baby"
+    "steps": [
+      {
+        "exerciseId": "hip-circles",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "knees-hugs",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-salute",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "toe-touch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reverse-shoulder",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "wide-leg-bend",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "side-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "standing-frog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "reverse-lunge",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "kneeling-psoas",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "squat-stretch",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "cat-cow",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "childs-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "downward-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "upward-frog",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "puppy-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bird-dog",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "frog-pose",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lizard-pose",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "elbow-plank",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "pigeon",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "superman",
+        "durationSeconds": 15
+      },
+      {
+        "exerciseId": "butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "seated-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "knees-to-chest",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "bridge",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "single-knee-to-chest",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "pelvic-tilt-press",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "lying-figure-four",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "dead-bug",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "reclined-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "spinal-twist",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "quad-stretch",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "folded-butterfly",
+        "durationSeconds": 30
+      },
+      {
+        "exerciseId": "hurdler",
+        "durationSeconds": 60
+      },
+      {
+        "exerciseId": "happy-baby",
+        "durationSeconds": 30
+      }
     ]
   }
 ];
