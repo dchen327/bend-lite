@@ -2,6 +2,7 @@ import { ChevronLeft, Clock3 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { AddBendRoutineButton } from "@/components/add-bend-routine-button";
 import { AppBottomNav } from "@/components/app-bottom-nav";
 import { ExerciseListItem } from "@/components/exercise-list-item";
 import { bendRoutines } from "@/data/bendRoutines";
@@ -15,10 +16,17 @@ export function generateStaticParams() {
 
 export default async function BendRoutinePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ q?: string | string[] }>;
 }) {
   const { slug } = await params;
+  const { q } = await searchParams;
+  const searchQuery = typeof q === "string" ? q.trim() : "";
+  const backHref = searchQuery
+    ? `/explore?q=${encodeURIComponent(searchQuery)}`
+    : "/explore";
   const routine = bendRoutines.find((candidate) => candidate.slug === slug);
 
   if (!routine) {
@@ -39,7 +47,7 @@ export default async function BendRoutinePage({
         <header className="sticky top-0 z-20 border-b border-slate-100 bg-white/95 px-4 pb-4 pt-[calc(0.75rem+env(safe-area-inset-top))] backdrop-blur">
           <div className="flex items-center gap-2">
             <Link
-              href="/explore"
+              href={backHref}
               aria-label="Back to Explore"
               className="grid size-11 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-slate-100"
             >
@@ -61,9 +69,14 @@ export default async function BendRoutinePage({
           </div>
         </header>
 
-        <p className="px-5 pt-5 text-sm leading-6 text-slate-500">
-          {routine.description}
-        </p>
+        <div className="px-5 pt-5">
+          <p className="text-sm leading-6 text-slate-500">
+            {routine.description}
+          </p>
+          <div className="mt-4">
+            <AddBendRoutineButton slug={routine.slug} />
+          </div>
+        </div>
 
         <ol className="px-4 py-3">
           {routineExercises.map(({ exercise, step }, index) => (

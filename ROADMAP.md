@@ -6,8 +6,11 @@ Living document for product ideas, priorities, and future plans.
 
 The MVP is a local-first stretching app with:
 
-- A homepage listing hardcoded routines
-- A read-only catalog of all 100 Bend routines with source step durations
+- A homepage listing saved personal routines
+- A catalog of all 100 Bend routines with source step durations
+- Ranked Explore search across names, descriptions, and muscle coverage
+- One-tap importing from Explore into My Routines
+- Local editing for exercise durations and ordering
 - Routine details, durations, exercise illustrations, and expandable instructions
 - A guided player with side switching, transitions, audio cues, controls, and wake lock
 - Start and next-exercise previews
@@ -15,18 +18,17 @@ The MVP is a local-first stretching app with:
 - Mobile viewport handling and pull-to-refresh prevention
 - Installable app metadata and icons
 
-Routine definitions remain easy to edit in `src/data/routines.ts`.
+Hardcoded defaults remain in `src/data/routines.ts`, while personal changes persist
+in versioned `localStorage` on the current device.
 
 ## Next priorities
 
 ### Editable routines
 
-- Edit exercise duration using free-form seconds
-- Reorder and remove exercises
+- Remove exercises
 - Add exercises from the existing library
 - Adjust transition and side-switch time
 - Reset a routine to its hardcoded default
-- Persist changes in `localStorage`
 
 ### Player settings
 
@@ -40,7 +42,6 @@ Routine definitions remain easy to edit in `src/data/routines.ts`.
 
 - Add more hardcoded personal routines
 - Duplicate a routine as a starting point
-- Turn browsable Bend routines into personal presets
 - Search exercises by name
 - Filter exercises by body area
 

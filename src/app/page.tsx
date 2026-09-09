@@ -1,16 +1,19 @@
+"use client";
+
 import { ChevronRight, Clock3 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
+import { useRoutineStore } from "@/components/routine-store-provider";
 import { exercises } from "@/data/exercises";
-import { routines } from "@/data/routines";
 import {
   formatRoutineDuration,
   getRoutineDurationSeconds,
 } from "@/lib/routines";
 
 export default function Home() {
+  const { routines } = useRoutineStore();
   const routineCards = routines.map((routine) => {
     const previewExercises = routine.steps.slice(0, 3).map((step) => {
       const exercise = exercises[step.exerciseId];
