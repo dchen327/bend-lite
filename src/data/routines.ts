@@ -48,4 +48,32 @@ export const fullBodyRoutine: Routine = {
   ],
 };
 
-export const routines: Routine[] = [fullBodyRoutine];
+export const badmintonRoutine: Routine = {
+  id: "badminton",
+  name: "Badminton",
+  exerciseTransitionSeconds: 3,
+  sideTransitionSeconds: 3,
+  steps: [
+    { exerciseId: "upward-salute", duration: 22, switchSides: false },
+    { exerciseId: "rag-doll", duration: 27, switchSides: false },
+    { exerciseId: "doorway-pecs", duration: 34, switchSides: false },
+    { exerciseId: "trunk-twist", duration: 40, switchSides: true },
+    { exerciseId: "side-lunge", duration: 37, switchSides: true },
+    { exerciseId: "lunge", duration: 40, switchSides: true },
+    { exerciseId: "wrist-extension", duration: 20, switchSides: false },
+    { exerciseId: "wrist-flexion", duration: 20, switchSides: false },
+    { exerciseId: "childs-pose", duration: 18, switchSides: false },
+    { exerciseId: "downward-dog", duration: 21, switchSides: false },
+    { exerciseId: "pigeon", duration: 45, switchSides: true },
+    { exerciseId: "90-90-hip-switch", duration: 38, switchSides: false },
+    { exerciseId: "lying-hamstring", duration: 39, switchSides: true },
+    { exerciseId: "reclined-butterfly", duration: 20, switchSides: false },
+    { exerciseId: "spinal-twist", duration: 40, switchSides: true },
+    { exerciseId: "kneeling-quad", duration: 40, switchSides: true },
+    { exerciseId: "squat-stretch", duration: 18, switchSides: false },
+    { exerciseId: "neck-laterals", duration: 30, switchSides: true },
+    { exerciseId: "neck-rotation", duration: 30, switchSides: true },
+  ],
+};
+
+export const routines: Routine[] = [fullBodyRoutine, badmintonRoutine];
