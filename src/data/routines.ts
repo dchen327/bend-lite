@@ -54,10 +54,10 @@ export const badmintonRoutine: Routine = {
   exerciseTransitionSeconds: 3,
   sideTransitionSeconds: 3,
   steps: [
-    { exerciseId: "upward-salute", duration: 22, switchSides: false },
-    { exerciseId: "rag-doll", duration: 27, switchSides: false },
+    { exerciseId: "upward-salute", duration: 17, switchSides: false },
+    { exerciseId: "rag-doll", duration: 22, switchSides: false },
     { exerciseId: "doorway-pecs", duration: 34, switchSides: false },
-    { exerciseId: "trunk-twist", duration: 40, switchSides: true },
+    { exerciseId: "trunk-twist", duration: 50, switchSides: true },
     { exerciseId: "side-lunge", duration: 37, switchSides: true },
     { exerciseId: "lunge", duration: 40, switchSides: true },
     { exerciseId: "wrist-extension", duration: 20, switchSides: false },
