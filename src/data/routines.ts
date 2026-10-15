@@ -58,6 +58,7 @@ export const badmintonRoutine: Routine = {
     { exerciseId: "rag-doll", duration: 22, switchSides: false },
     { exerciseId: "doorway-pecs", duration: 34, switchSides: false },
     { exerciseId: "trunk-twist", duration: 50, switchSides: true },
+    { exerciseId: "wide-leg-side-bend", duration: 34, switchSides: true },
     { exerciseId: "side-lunge", duration: 37, switchSides: true },
     { exerciseId: "lunge", duration: 40, switchSides: true },
     { exerciseId: "wrist-extension", duration: 20, switchSides: false },
