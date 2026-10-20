@@ -50,13 +50,13 @@ export const fullBodyRoutine: Routine = {
 
 export const badmintonRoutine: Routine = {
   id: "badminton",
-  name: "Badminton",
+  name: "Badminton Full Body",
   exerciseTransitionSeconds: 3,
   sideTransitionSeconds: 3,
   steps: [
     { exerciseId: "upward-salute", duration: 17, switchSides: false },
     { exerciseId: "rag-doll", duration: 22, switchSides: false },
-    { exerciseId: "doorway-pecs", duration: 30, switchSides: false },
+    { exerciseId: "doorway-pecs", duration: 32, switchSides: false },
     { exerciseId: "trunk-twist", duration: 50, switchSides: true },
     { exerciseId: "wide-leg-side-bend", duration: 34, switchSides: true },
     { exerciseId: "side-lunge", duration: 30, switchSides: true },
@@ -76,4 +76,4 @@ export const badmintonRoutine: Routine = {
   ],
 };
 
-export const routines: Routine[] = [fullBodyRoutine, badmintonRoutine];
+export const routines: Routine[] = [badmintonRoutine, fullBodyRoutine];
